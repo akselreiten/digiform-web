@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpModule, RequestOptions, Http } from '@angular/http';
 import {
   NgModule,
   ApplicationRef
@@ -14,6 +14,8 @@ import {
   RouterModule,
   PreloadAllModules
 } from '@angular/router';
+import { AuthHttp, AuthConfig } from 'angular2-jwt';
+
 
 /*
  * Platform and Environment providers/directives/pipes
@@ -24,13 +26,19 @@ import { ROUTES } from './app.routes';
 import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
-import { HomeComponent } from './home';
-import { AboutComponent } from './about';
-import { NoContentComponent } from './no-content';
-import { XLargeDirective } from './home/x-large';
 
-import '../styles/styles.scss';
-import '../styles/headings.css';
+import { HomeComponent } from './containers';
+
+import { NoContentComponent } from './no-content';
+
+import {
+  SubjectService,
+  Api
+} from '../lib/services';
+
+function authHttpServiceFactory(http: Http, options: RequestOptions) {
+  return new AuthHttp(new AuthConfig(), http, options);
+}
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -51,10 +59,8 @@ type StoreType = {
   bootstrap: [ AppComponent ],
   declarations: [
     AppComponent,
-    AboutComponent,
     HomeComponent,
-    NoContentComponent,
-    XLargeDirective
+    NoContentComponent
   ],
   imports: [ // import Angular's modules
     BrowserModule,
@@ -64,7 +70,16 @@ type StoreType = {
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
-    APP_PROVIDERS
+    APP_PROVIDERS,
+
+    SubjectService,
+    Api,
+
+    {
+      provide: AuthHttp,
+      useFactory: authHttpServiceFactory,
+      deps: [Http, RequestOptions]
+    }
   ]
 })
 export class AppModule {
