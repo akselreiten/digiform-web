@@ -27,17 +27,24 @@ import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
 
-import { HomeComponent } from './containers';
+import {
+  HomeComponent,
+  LoginComponent
+} from './containers';
 
 import { NoContentComponent } from './no-content';
 
 import {
   SubjectService,
-  Api
+  Api,
+  UserService,
+  AuthGuard
 } from '../lib/services';
 
 function authHttpServiceFactory(http: Http, options: RequestOptions) {
-  return new AuthHttp(new AuthConfig(), http, options);
+  return new AuthHttp(new AuthConfig({
+    headerPrefix: 'JWT',
+  }), http, options);
 }
 
 // Application wide providers
@@ -60,6 +67,7 @@ type StoreType = {
   declarations: [
     AppComponent,
     HomeComponent,
+    LoginComponent,
     NoContentComponent
   ],
   imports: [ // import Angular's modules
@@ -73,13 +81,17 @@ type StoreType = {
     APP_PROVIDERS,
 
     SubjectService,
+    UserService,
     Api,
+    AuthGuard,
 
     {
       provide: AuthHttp,
       useFactory: authHttpServiceFactory,
       deps: [Http, RequestOptions]
-    }
+    },
+
+
   ]
 })
 export class AppModule {

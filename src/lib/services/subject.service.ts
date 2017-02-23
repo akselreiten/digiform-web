@@ -14,6 +14,6 @@ export class SubjectService {
 
   public list() {
     return this._api.request('GET', this._url)
-      .map(res => res.json());
+      .map(res => res.json().results);
   }
 }
