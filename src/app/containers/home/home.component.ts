@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {FormGroup} from "@angular/forms";
 import {
   SubjectService
 } from '../../../lib/services'
@@ -14,11 +15,24 @@ export class HomeComponent {
 
   public subjects:any[] = [];
 
-  constructor(private _subjectService:SubjectService) {
+
+  public test:string = 'Hey';
+
+  constructor(
+    private _subjectService:SubjectService,
+
+
+  ) {
 
     this._subjectService.list()
       .subscribe(subjects => {
         this.subjects = subjects;
       }, error => {})
+  }
+
+  public login(fg:FormGroup) {
+    console.log(fg.value);
+
+
   }
 }

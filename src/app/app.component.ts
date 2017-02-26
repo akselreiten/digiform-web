@@ -15,6 +15,7 @@ import { AppState } from './app.service';
 @Component({
   selector: 'app',
   encapsulation: ViewEncapsulation.None,
+  styles: [require('./app.style.scss')],
   template: `<router-outlet></router-outlet>`
 })
 export class AppComponent {
