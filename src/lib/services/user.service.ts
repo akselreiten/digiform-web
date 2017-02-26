@@ -28,7 +28,7 @@ export class UserService {
     let data:any = {username:username, password:password, email:email, first_name:first_name, last_name:last_name};
     let url:string = `${this._url}createUser/`;
 
-    return this._api.request('GET', url, null, data)
+    return this._api.request('POST', url, null, data)
 
   }
 }
