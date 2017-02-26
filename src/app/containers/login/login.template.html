@@ -13,6 +13,18 @@
 
     <!-- Login error -->
     <p *ngFor="let e of loginError?.non_field_errors">{{e}}</p>
+
     <button type="submit">Login</button>
+
   </form>
+
+  <br>
+  <br>
+
+  <form class="login-form" (ngSubmit)="createUserNavigate()">
+    <button type="submit">New user?</button>
+
+  </form>
+
+
 </div>

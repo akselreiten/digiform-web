@@ -29,7 +29,8 @@ import { AppState, InternalStateType } from './app.service';
 
 import {
   HomeComponent,
-  LoginComponent
+  LoginComponent,
+  CreateUserComponent
 } from './containers';
 
 import { NoContentComponent } from './no-content';
@@ -68,7 +69,8 @@ type StoreType = {
     AppComponent,
     HomeComponent,
     LoginComponent,
-    NoContentComponent
+    NoContentComponent,
+    CreateUserComponent
   ],
   imports: [ // import Angular's modules
     BrowserModule,

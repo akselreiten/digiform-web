@@ -34,4 +34,8 @@ export class LoginComponent {
         this.loginError = error.json();
       });
   }
+
+  public createUserNavigate(){
+    this._router.navigate(['createuser']);
+  }
 }
