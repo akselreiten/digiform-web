@@ -16,7 +16,6 @@ import {
 } from '@angular/router';
 import { AuthHttp, AuthConfig } from 'angular2-jwt';
 
-
 /*
  * Platform and Environment providers/directives/pipes
  */
@@ -30,7 +29,8 @@ import { AppState, InternalStateType } from './app.service';
 import {
   HomeComponent,
   LoginComponent,
-  CreateUserComponent
+  CreateUserComponent,
+  UniversityComponent,
 } from './containers';
 
 import { NoContentComponent } from './no-content';
@@ -39,8 +39,10 @@ import {
   SubjectService,
   Api,
   UserService,
-  AuthGuard
+  AuthGuard,
+  UniversityService,
 } from '../lib/services';
+
 
 function authHttpServiceFactory(http: Http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig({
@@ -70,7 +72,8 @@ type StoreType = {
     HomeComponent,
     LoginComponent,
     NoContentComponent,
-    CreateUserComponent
+    CreateUserComponent,
+    UniversityComponent,
   ],
   imports: [ // import Angular's modules
     BrowserModule,
@@ -86,13 +89,13 @@ type StoreType = {
     UserService,
     Api,
     AuthGuard,
+    UniversityService,
 
     {
       provide: AuthHttp,
       useFactory: authHttpServiceFactory,
       deps: [Http, RequestOptions]
     },
-
 
   ]
 })

@@ -25,6 +25,7 @@ export class UserService {
   }
 
   public createUser(username:string, password:string, email:string, first_name:string, last_name:string){
+
     let data:any = {username:username, password:password, email:email, first_name:first_name, last_name:last_name};
     let url:string = `${this._url}createUser/`;
 
