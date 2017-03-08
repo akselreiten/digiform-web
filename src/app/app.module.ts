@@ -31,6 +31,7 @@ import {
   LoginComponent,
   CreateUserComponent,
   UniversityComponent,
+  CreateApplicationComponent,
 } from './containers';
 
 import { NoContentComponent } from './no-content';
@@ -41,6 +42,7 @@ import {
   UserService,
   AuthGuard,
   UniversityService,
+  ApplicationService,
 } from '../lib/services';
 
 
@@ -74,8 +76,9 @@ type StoreType = {
     NoContentComponent,
     CreateUserComponent,
     UniversityComponent,
+    CreateApplicationComponent,
   ],
-  imports: [ // import Angular's modules
+  imports: [ // import Angular  's modules
     BrowserModule,
     FormsModule,
     HttpModule,
@@ -90,6 +93,7 @@ type StoreType = {
     Api,
     AuthGuard,
     UniversityService,
+    ApplicationService,
 
     {
       provide: AuthHttp,

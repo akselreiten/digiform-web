@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { HomeComponent, LoginComponent, CreateUserComponent,
-  UniversityComponent } from './containers';
+  UniversityComponent, CreateApplicationComponent} from './containers';
 
 import { NoContentComponent } from './no-content';
 
@@ -11,5 +11,6 @@ export const ROUTES: Routes = [
   { path: 'login',      component: LoginComponent },
   { path: 'createuser',   component: CreateUserComponent},
   { path: 'universities',   component: UniversityComponent, canActivate: [AuthGuard]},
+  { path: 'createapplication', component: CreateApplicationComponent},
   { path: '**',    component: NoContentComponent },
 ];

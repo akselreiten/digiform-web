@@ -1,6 +1,87 @@
 <div class="heading">
 
-  <h1>Home</h1>
+
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+
+    <style type="home/css">
+    </style>
+
+  </head>
+
+  <body>
+
+
+
+  <div class="panes-container">
+
+    <div class="left-pane" id="left-pane">
+      <br><h2>Digiform.</h2><br>
+      <a href="#profile">My profile</a><br>
+      <a href="applications">Applications</a><br>
+      <a href="subjects">Subjects</a><br>
+      <a href="plans">Study plans</a><br>
+      <a href="universities">Universities</a><br>
+      <a href="inbox">Inbox</a><br>
+      <a href="help">Help</a>
+
+    </div>
+    <div class="right-pane" id="right-pane">
+      <br>
+      <h1>Applications</h1>
+      <br>
+      <form class="login-form" (ngSubmit)="createApplicationNavigate()">
+        <button type="submit">New application</button>
+
+      </form>
+      <br><br><br>
+      <table align="center">
+        <tr>
+          <th>NTNU Subject</th>
+          <th>University</th>
+          <th>Replacement Subject</th>
+          <th>Application ID</th>
+          <th>Application Status</th>
+        </tr>
+        <tr>
+          <td>Alfreds Futterkiste</td>
+          <td>Maria Anders</td>
+          <td>Germany</td>
+        </tr>
+        <tr>
+          <td>Centro comercial</td>
+          <td>Francisco Chang</td>
+          <td>Mexico</td>
+        </tr>
+        <tr>
+          <td>Ernst Handel</td>
+          <td>Roland Mendel</td>
+          <td>Austria</td>
+        </tr>
+        <tr>
+          <td>Island Trading</td>
+          <td>Helen Bennett</td>
+          <td>UK</td>
+        </tr>
+        <tr>
+          <td>Laughing Bacchus</td>
+          <td>Yoshi Tannamuri</td>
+          <td>Canada</td>
+        </tr>
+        <tr>
+          <td>Magazzini</td>
+          <td>Giovanni Rovelli</td>
+          <td>Italy</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  </body>
+  </html>
+
   <p *ngFor="let subject of subjects">{{subject.title}}</p>
 
 </div>

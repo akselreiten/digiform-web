@@ -1,0 +1,29 @@
+<div class="heading">
+
+  <h1>Create new user</h1>
+  <!--<p *ngFor="let subject of subjects">{{subject.title}}</p>-->
+
+  <form #f="ngForm" class="login-form" (ngSubmit)="createUser(f)">
+
+    <!-- Username -->
+    <input type="text" name="username" id="username" placeholder="New username" ngModel required>
+
+    <!-- Password -->
+    <input type="password" name="password" id="password" placeholder="New password" ngModel required>
+
+    <!-- Email -->
+    <input type="email" name="email" id="email" placeholder="Email" ngModel required>
+
+    <!-- First name -->
+    <input type="text" name="first_name" id="first_name" placeholder="First name" ngModel required>
+
+    <!-- Last name -->
+    <input type="text" name="last_name" id="last_name" placeholder="Last name" ngModel required>
+
+
+    <!-- Login error -->
+    <p *ngFor="let e of createUserError?.non_field_errors">{{e}}</p>
+
+    <button type="submit">Create new user</button>
+  </form>
+</div>
