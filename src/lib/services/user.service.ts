@@ -38,5 +38,13 @@ export class UserService {
 
     return this._api.request('POST', url, null, data)
   }
+
+  public createApplication(ntnu_subject:string, university:string, replacement:string, subject_info:string, credits_ntnu:number, approval_justification:string){
+    let data:any = {ntnu_subject:ntnu_subject, university:university, replacement:replacement, subject_information:subject_info, credits_ntnu:credits_ntnu, approval_justification:approval_justification};
+    let url:string = `${this._url}createApplication/`;
+
+    return this._api.request('POST', url, null, data)
+  }
+
 }
 

@@ -1,29 +1,48 @@
 <div class="heading">
 
-  <h1>Create new user</h1>
-  <!--<p *ngFor="let subject of subjects">{{subject.title}}</p>-->
+  <div class="panes-container">
 
-  <form #f="ngForm" class="login-form" (ngSubmit)="createUser(f)">
+    <div class="left-pane" id="left-pane">
+      <br><h2>Digiform.</h2><br>
+      <a href="#profile">My profile</a><br>
+      <a href="applications">Applications</a><br>
+      <a href="subjects">Subjects</a><br>
+      <a href="plans">Study plans</a><br>
+      <a href="universities">Universities</a><br>
+      <a href="inbox">Inbox</a><br>
+      <a href="help">Help</a>
 
-    <!-- Username -->
-    <input type="text" name="username" id="username" placeholder="New username" ngModel required>
+    </div>
+    <div class="right-pane" id="right-pane">
 
-    <!-- Password -->
-    <input type="password" name="password" id="password" placeholder="New password" ngModel required>
 
-    <!-- Email -->
-    <input type="email" name="email" id="email" placeholder="Email" ngModel required>
+    <h1>Applications</h1>
 
-    <!-- First name -->
-    <input type="text" name="first_name" id="first_name" placeholder="First name" ngModel required>
+  <form #f="ngForm" class="login-form" (ngSubmit)="createApplication(f)">
 
-    <!-- Last name -->
-    <input type="text" name="last_name" id="last_name" placeholder="Last name" ngModel required>
+    <!-- NTNU subject -->
+    <input type="text" name="ntnu_subject" id="ntnu_subject" placeholder="Choose subject" ngModel required>
 
+    <!-- University -->
+    <input type="text" name="university" id="university" placeholder="University" ngModel required>
+
+    <!-- Replacement subject -->
+    <input type="text" name="replacement_subject" id="replacement_subject" placeholder="Replacement subject" ngModel required>
+
+    <!-- Subject information -->
+    <input type="text" name="subject_information" id="subject_information" placeholder="Subject Information (Optional)">
+
+    <!-- Credits (NTNU) -->
+    <input type="text" name="credits_ntnu" id="credits_ntnu" placeholder="Credits (NTNU)" ngModel required>
+
+    <!-- Approval justification -->
+    <input type="text" name="approval_justification" id="approval_justification" placeholder="Approval justification (Optional)">
 
     <!-- Login error -->
     <p *ngFor="let e of createUserError?.non_field_errors">{{e}}</p>
 
-    <button type="submit">Create new user</button>
+    <button type="submit">Apply</button>
   </form>
+    </div>
+  </div>
 </div>
