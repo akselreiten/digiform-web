@@ -1,6 +1,6 @@
 .heading {
   padding: 20px 100px;
-  background: #3e78e6;
+  background: #ccc;
   color: #222;
   text-align: center;
 
@@ -29,7 +29,6 @@
   }
 }
 
-
 html, body {
   height: 100%;
 }
@@ -51,10 +50,16 @@ html, body {
 }
 
 .panes-container,
-.panes-separator,
 .left-pane,
 .right-pane {
   margin: 0;
   padding: 0;
   height: 100%;
+}
+
+table, th, td {
+  border: 0px solid black;
+  table-layout: fixed;
+  font-family: arial, sans-serif;
+  width: 90%;
 }

@@ -18,7 +18,11 @@
   <div class="panes-container">
 
     <div class="left-pane" id="left-pane">
-      <br><h2>Digiform.</h2><br>
+      <br>
+      <a href="home">
+      <img src="\assets\img\logo.png" alt="Digiform." style="width:140px;height:auto;"></a>
+      <br>
+      <br>
       <a href="#profile">My profile</a><br>
       <a href="applications">Applications</a><br>
       <a href="subjects">Subjects</a><br>
@@ -77,11 +81,11 @@
         </tr>
       </table>
     </div>
+    <p *ngFor="let subject of subjects">{{subject.title}}</p>
+
   </div>
 
   </body>
   </html>
-
-  <p *ngFor="let subject of subjects">{{subject.title}}</p>
 
 </div>
