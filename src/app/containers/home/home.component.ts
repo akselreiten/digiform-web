@@ -5,6 +5,7 @@ import {Router} from "@angular/router";
 import {
   SubjectService
 } from '../../../lib/services'
+import {ApplicationService} from "../../../lib/services/application.service";
 
 
 @Component({
@@ -16,12 +17,14 @@ import {
 export class HomeComponent {
 
   public subjects:any[] = [];
+  public applications:any[] = [];
 
 
   public test:string = 'Hey';
 
   constructor(
     private _subjectService:SubjectService,
+    private _applicationService:ApplicationService,
     private _router:Router
 
   ) {
@@ -29,6 +32,11 @@ export class HomeComponent {
     this._subjectService.list()
       .subscribe(subjects => {
         this.subjects = subjects;
+      }, error => {})
+
+    this._applicationService.list()
+      .subscribe(applications => {
+        this.applications = applications;
       }, error => {})
   }
 
