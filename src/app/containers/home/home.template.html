@@ -19,7 +19,7 @@
 
     <div class="left-pane" id="left-pane">
       <br>
-      <a href="home">
+      <a href="#">
       <img src="\assets\img\logo.png" alt="Digiform." style="width:140px;height:auto;"></a>
       <br>
       <br>
@@ -81,8 +81,10 @@
         </tr>
       </table>
     </div>
-
-    <p *ngFor="let subject of subjects">{{subject.title}}</p>
+    
+    <div *ngFor="let app of applications; let i=index">{{app.user}}
+      This is the element index: {{i}}
+    </div>
 
   </div>
 
