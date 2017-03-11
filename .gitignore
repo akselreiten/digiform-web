@@ -1,5 +1,8 @@
 # @AngularClass
 
+# Venv
+venv/
+
 # Logs
 logs
 *.log

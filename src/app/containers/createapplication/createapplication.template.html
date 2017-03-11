@@ -1,10 +1,12 @@
 <div class="heading">
 
+<body>
+
   <div class="panes-container">
 
     <div class="left-pane" id="left-pane">
       <br>
-      <a href="home">
+      <a href="#">
         <img src="\assets\img\logo.png" alt="Digiform." style="width:140px;height:auto;"></a>
       <br>
       <br>
@@ -19,8 +21,8 @@
     </div>
     <div class="right-pane" id="right-pane">
 
-
-    <h1>Applications</h1>
+    <br>
+    <h1>New application</h1>
 
   <form #f="ngForm" class="login-form" (ngSubmit)="createApplication(f)">
 
@@ -32,16 +34,17 @@
 
     <!-- Replacement subject -->
     <input type="text" name="replacement_subject" id="replacement_subject" placeholder="Replacement subject" ngModel required>
-
+    <br><br>
     <!-- Subject information -->
-    <input type="text" name="subject_information" id="subject_information" placeholder="Subject Information (Optional)">
-
+    <textarea rows="7" cols="40" style="border: none; resize: none" name="subject_information" id="subject_information" placeholder="Subject Information (Optional)"></textarea>
+    <br><br>
     <!-- Credits (NTNU) -->
     <input type="text" name="credits_ntnu" id="credits_ntnu" placeholder="Credits (NTNU)" ngModel required>
-
+    <br><br>
     <!-- Approval justification -->
-    <input type="text" name="approval_justification" id="approval_justification" placeholder="Approval justification (Optional)">
+    <textarea rows="7" cols="40" style="border: none; resize: none" name="approval_justification" id="approval_justification" placeholder="Approval justification (optional)"></textarea>
 
+    <br><br>
     <!-- Login error -->
     <p *ngFor="let e of createUserError?.non_field_errors">{{e}}</p>
 
@@ -49,4 +52,5 @@
   </form>
     </div>
   </div>
+</body>
 </div>
