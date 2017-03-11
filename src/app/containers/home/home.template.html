@@ -42,6 +42,7 @@
       </form>
       <br><br><br>
       <table align="center">
+
         <tr>
           <th>NTNU Subject</th>
           <th>University</th>
@@ -49,35 +50,12 @@
           <th>Application ID</th>
           <th>Application Status</th>
         </tr>
-        <tr>
-          <td>Alfreds Futterkiste</td>
-          <td>Maria Anders</td>
-          <td>Germany</td>
-        </tr>
-        <tr>
-          <td>Centro comercial</td>
-          <td>Francisco Chang</td>
-          <td>Mexico</td>
-        </tr>
-        <tr>
-          <td>Ernst Handel</td>
-          <td>Roland Mendel</td>
-          <td>Austria</td>
-        </tr>
-        <tr>
-          <td>Island Trading</td>
-          <td>Helen Bennett</td>
-          <td>UK</td>
-        </tr>
-        <tr>
-          <td>Laughing Bacchus</td>
-          <td>Yoshi Tannamuri</td>
-          <td>Canada</td>
-        </tr>
-        <tr>
-          <td>Magazzini</td>
-          <td>Giovanni Rovelli</td>
-          <td>Italy</td>
+        <tr *ngFor="let app of applications; let i=index">
+          <td>{{app.ntnuSubject.title}}</td>
+          <td>{{app.replacingSubject.university.title}}</td>
+          <td>{{app.replacingSubject.title}}</td>
+          <td>{{app.id}}</td>
+          <td>Processing</td>
         </tr>
       </table>
     </div>
