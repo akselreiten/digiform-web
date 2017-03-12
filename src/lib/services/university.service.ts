@@ -16,4 +16,10 @@ export class UniversityService {
     return this._api.request('GET', this._url)
       .map(res => res.json().results);
   }
+
+  public listSubjects(id) {
+    return this._api.request('GET', this._url + id + "/subjects/")
+      .map(res => res.json());
+  }
+
 }
