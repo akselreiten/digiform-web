@@ -3,7 +3,7 @@ import {FormGroup} from "@angular/forms";
 import {Router} from "@angular/router";
 
 import {
-  UserService
+  ApplicationService
 } from '../../../lib/services'
 
 
@@ -15,21 +15,21 @@ import {
 
 export class CreateApplicationComponent {
 
-  public createUserError: any;
+  public createApplicationError: any;
 
-  constructor(private _userService: UserService,
+  constructor(private _applicationService: ApplicationService,
               private _router: Router) {
 
   }
 
   public createApplication(fg: FormGroup) {
 
-    this._userService.createApplication(fg.value.ntnu_subject, fg.value.university, fg.value.replacement_subject, fg.value.subject_information, fg.value.credits_ntnu, fg.value.approval_justification)
-
+    this._applicationService.createApplication(fg.value.ntnu_subject, fg.value.university, fg.value.replacement_subject, fg.value.credits_ntnu, fg.value.approval_justification)
+      /*later: add fg.value.subject_information, */
       .subscribe(success => {
         this._router.navigate(['home'])
       }, error => {
-        this.createUserError = error.json();
+        this.createApplicationError = error.json();
       });
   }
 }
