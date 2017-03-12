@@ -5,6 +5,8 @@ import {Router} from "@angular/router";
 import {
   ApplicationService
 } from '../../../lib/services'
+import {UniversityService} from "../../../lib/services/university.service";
+import {UserService} from "../../../lib/services/user.service";
 
 
 @Component({
@@ -16,15 +18,23 @@ import {
 export class CreateApplicationComponent {
 
   public createApplicationError: any;
+  public universities:any[] = [];
 
   constructor(private _applicationService: ApplicationService,
+              private _universityService: UniversityService,
+              private _userService:UserService,
               private _router: Router) {
-
+    this._universityService.list()
+      .subscribe(universities => {
+        this.universities = universities;
+      }, error => {});
   }
 
   public createApplication(fg: FormGroup) {
 
-    this._applicationService.createApplication(fg.value.ntnu_subject, fg.value.university, fg.value.replacement_subject, fg.value.credits_ntnu, fg.value.approval_justification)
+    console.log(fg.value);
+
+    this._applicationService.createApplication(fg.value)
       /*later: add fg.value.subject_information, */
       .subscribe(success => {
         this._router.navigate(['home'])

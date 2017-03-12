@@ -36,7 +36,7 @@
       <br>
       <h1>Applications</h1>
 
-      
+
       <br>
       <form class="login-form" (ngSubmit)="createApplicationNavigate()">
         <button type="submit">New application</button>
@@ -53,9 +53,9 @@
           <th>Application Status</th>
         </tr>
         <tr *ngFor="let app of applications; let i=index">
-          <td>{{app.ntnuSubject.title}}</td>
-          <td>{{app.replacingSubject.university.title}}</td>
-          <td>{{app.replacingSubject.title}}</td>
+          <td>{{app.ntnu_subject.title}}</td>
+          <td>{{app.replacing_subject?.university?.title}}</td>
+          <td>{{app.replacing_subject?.title}}</td>
           <td>{{app.id}}</td>
           <td>Processing</td>
         </tr>

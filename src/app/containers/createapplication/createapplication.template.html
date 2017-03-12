@@ -30,19 +30,22 @@
     <input type="text" name="ntnu_subject" id="ntnu_subject" placeholder="Choose subject" ngModel required>
 
     <!-- University -->
-    <input type="text" name="university" id="university" placeholder="University" ngModel required>
+    <select name="university" id="university" ngModel required>
+      <option value="0" disabled selected>Velg et universitet</option>
+      <option value="{{uni.id}}" *ngFor="let uni of universities">{{uni.title}}</option>
+    </select>
 
     <!-- Replacement subject -->
-    <input type="text" name="replacement_subject" id="replacement_subject" placeholder="Replacement subject" ngModel required>
+    <input type="text" name="replacing_subject" id="replacing_subject " placeholder="Replacement subject" ngModel required>
     <br><br>
     <!-- Subject information -->
     <textarea rows="7" cols="40" style="border: none; resize: none" name="subject_information" id="subject_information" placeholder="Subject Information (Optional)"></textarea>
     <br><br>
     <!-- Credits (NTNU) -->
-    <input type="text" name="credits_ntnu" id="credits_ntnu" placeholder="Credits (NTNU)" ngModel required>
+    <input type="number" name="credits_ntnu" id="credits_ntnu" placeholder="Credits (NTNU)" ngModel required>
     <br><br>
     <!-- Approval justification -->
-    <textarea rows="7" cols="40" style="border: none; resize: none" name="approval_justification" id="approval_justification" placeholder="Approval justification (optional)"></textarea>
+    <textarea rows="7" cols="40" style="border: none; resize: none" name="justification" id="justification" placeholder="Approval justification (optional)" ngModel></textarea>
 
     <br><br>
     <!-- Login error -->
