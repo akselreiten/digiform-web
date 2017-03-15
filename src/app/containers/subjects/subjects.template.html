@@ -11,7 +11,7 @@
       <br>
       <br>
       <a href="#">Home</a><br>
-      <a href="#subjects">Subjects</a><br>
+      <a href="#subjects"><b>Subjects</b></a><br>
       <a href="#universities">Universities</a><br>
       <a href="#chat">Chat</a><br>
       <a href="#profile">My profile</a><br>
@@ -19,26 +19,40 @@
 
     </div>
     <div class="right-pane" id="right-pane">
-
       <br>
-      <h1>New application</h1>
+      <h1>Subjects</h1>
 
+      <div class= "inner-panes-container">
+        <div class = "right-inner-pane">
+          <h3>Search Subjects</h3>
+        </div>
+
+        <div class="panes-separator" id="panes-separator"></div>
+
+        <div class = "left-inner-pane">
+          <h3>Results</h3>
+        </div>
+      </div>
+
+
+
+      <!--
       <form #f="ngForm" class="login-form" (ngSubmit)="createApplication(f)">
 
-        <!-- NTNU subject -->
+
         <select name="ntnu_subject" id="ntnu_subject" ngModel required>
           <option value="" disabled selected>Velg et fag fra NTNU</option>
           <option value="{{subject.id}}" *ngFor="let subject of NTNUsubjects">{{subject.title}}</option>
         </select>
-        <!--<input type="text" name="ntnu_subject" id="ntnu_subject" placeholder="Choose subject" ngModel required> -->
+
         <br><br>
-        <!-- University -->
+
         <select (change)="getUniSubjects($event)" name="university" id="university" ngModel required>
           <option value="" disabled selected>Velg et universitet i utlandet</option>
           <option value="{{uni.id}}" *ngFor="let uni of universities">{{uni.title}}</option>
         </select>
         <br><br>
-        <!-- Replacement subject -->
+
 
         <select name="replacing_subject" id="replacing_subject" ngModel required>
           <option value="" disabled selected>{{replacementPlaceholderString}}</option>
@@ -46,24 +60,24 @@
         </select>
 
         <br><br>
-        <!-- Subject information -->
+
         <textarea rows="7" cols="40" style="border: none; resize: none" name="subject_information"
                   id="subject_information" placeholder="Subject Information (Optional)"></textarea>
         <br><br>
-        <!-- Credits (NTNU) -->
+
         <input type="number" name="credits_ntnu" id="credits_ntnu" placeholder="Credits (NTNU)" ngModel required>
         <br><br>
 
-        <!-- Approval justification -->
+
         <textarea rows="7" cols="40" style="border: none; resize: none" name="justification" id="justification"
                   placeholder="Approval justification (optional)" ngModel></textarea>
 
         <br><br>
-        <!-- Login error -->
+
         <p *ngFor="let e of createApplicationError?.non_field_errors">{{e}}</p>
 
         <button type="submit">Apply</button>
-      </form>
+      </form>-->
     </div>
   </div>
   </body>

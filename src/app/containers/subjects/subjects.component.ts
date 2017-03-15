@@ -10,12 +10,12 @@ import {SubjectService} from "../../../lib/services/subject.service";
 
 
 @Component({
-  selector: 'createapplication',
-  template: require('./createapplication.template.html'),
-  styles: [require('./createapplication.style.scss'),]
+  selector: 'subjects',
+  template: require('./subjects.template.html'),
+  styles: [require('./subjects.style.scss'),]
 })
 
-export class CreateApplicationComponent {
+export class SubjectComponent {
 
   public createApplicationError: any;
   public universities:any[] = [];
