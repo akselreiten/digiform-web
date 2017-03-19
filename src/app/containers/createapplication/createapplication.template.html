@@ -48,7 +48,7 @@
         <br><br>
         <!-- Subject information -->
         <textarea rows="7" cols="40" style="border: none; resize: none" name="subject_information"
-                  id="subject_information" placeholder="Subject Information (Optional)"></textarea>
+                  id="subject_information" placeholder="Subject Information (Optional)" ngModel></textarea>
         <br><br>
         <!-- Credits (NTNU) -->
         <input type="number" name="credits_ntnu" id="credits_ntnu" placeholder="Credits (NTNU)" ngModel required>
@@ -59,7 +59,7 @@
                   placeholder="Approval justification (optional)" ngModel></textarea>
 
         <br><br>
-        <!-- Login error -->
+        <!-- Error -->
         <p *ngFor="let e of createApplicationError?.non_field_errors">{{e}}</p>
 
         <button type="submit">Apply</button>

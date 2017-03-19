@@ -21,7 +21,12 @@
     <div class="right-pane" id="right-pane">
       <br>
       <h1>Subjects</h1>
+      <br>
+      <form class="login-form" (ngSubmit)="createSubjectNavigate()">
+        <button type="submit">Add subject</button>
+      </form>
 
+      <br><br><br>
       <div class= "inner-panes-container">
         <div class = "right-inner-pane">
           <h3>Search Subjects</h3>

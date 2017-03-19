@@ -35,7 +35,8 @@ import {
   SubjectComponent,
   HelpComponent,
   ProfileComponent,
-  ChatComponent
+  ChatComponent,
+  CreateSubjectComponent
 } from './containers';
 
 import { NoContentComponent } from './no-content';
@@ -85,6 +86,7 @@ type StoreType = {
     HelpComponent,
     ProfileComponent,
     ChatComponent,
+    CreateSubjectComponent
   ],
   imports: [ // import Angular  's modules
     BrowserModule,

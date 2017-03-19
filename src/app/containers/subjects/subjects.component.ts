@@ -67,4 +67,8 @@ export class SubjectComponent {
         this.createApplicationError = error.json();
       });
   }
+
+  public createSubjectNavigate(){
+    this._router.navigate(['createsubject']);
+  }
 }

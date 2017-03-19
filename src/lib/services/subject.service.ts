@@ -16,4 +16,11 @@ export class SubjectService {
     return this._api.request('GET', this._url)
       .map(res => res.json().results);
   }
+
+  public createSubject(data:any){
+
+    let url:string = `${this._url}`;
+    return this._api.request('POST', url, null, data)
+  }
+
 }

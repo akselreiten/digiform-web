@@ -1,0 +1,59 @@
+<div class="heading">
+
+  <body>
+
+  <div class="panes-container">
+
+    <div class="left-pane" id="left-pane">
+      <br>
+      <a href="#">
+        <img src="\assets\img\logo.png" alt="Digiform." style="width:140px;height:auto;"></a>
+      <br>
+      <br>
+      <a href="#">Home</a><br>
+      <a href="#subjects">Subjects</a><br>
+      <a href="#universities">Universities</a><br>
+      <a href="#chat">Chat</a><br>
+      <a href="#profile">My profile</a><br>
+      <a href="#help">Help</a>
+
+    </div>
+    <div class="right-pane" id="right-pane">
+
+      <br>
+      <h1>New subject</h1>
+
+      <form #f="ngForm" class="login-form" (ngSubmit)="createSubject(f)">
+
+        <!-- University -->
+        <select name="university" id="university" ngModel required>
+          <option value="" disabled selected>Velg et universitet i utlandet</option>
+          <option value="{{uni.id}}" *ngFor="let uni of universities">{{uni.title}}</option>
+        </select>
+        <br><br>
+        <!-- Replacement subject -->
+
+        <input type="text" name="title" id="title" placeholder="Fagnavn" ngModel required>
+        <br><br>
+
+        <!--Course code -->
+        <input type="text" name="courseCode" id="courseCode" placeholder="Fagkode" ngModel required>
+
+        <!-- Credits (NTNU) -->
+        <input type="number" step=0.25 min=0 name="ntnuCredits" id="ntnuCredits" placeholder="Studiepoeng (NTNU)" ngModel required>
+        <br><br>
+
+        <textarea rows="7" cols="40" style="border: none; resize: none" name="description"
+                  id="description" placeholder="Subject Information (Optional)" ngModel></textarea>
+        <br><br>
+
+        <br><br>
+        <!-- Error -->
+        <p *ngFor="let e of createApplicationError?.non_field_errors">{{e}}</p>
+
+        <button type="submit">Add subject</button>
+      </form>
+    </div>
+  </div>
+  </body>
+</div>
