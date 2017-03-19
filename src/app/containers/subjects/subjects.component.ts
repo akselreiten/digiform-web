@@ -17,7 +17,7 @@ import {SubjectService} from "../../../lib/services/subject.service";
 
 export class SubjectComponent {
 
-  public createApplicationError: any;
+  public subjectError: any;
   public universities:any[] = [];
   public subjects:any[] = [];
   public NTNUsubjects:any[] = [];
@@ -25,7 +25,13 @@ export class SubjectComponent {
 
   constructor(private _applicationService: ApplicationService,
               private _universityService: UniversityService,
+              private _subjectService: SubjectService,
               private _router: Router) {
+
+    this._subjectService.list()
+      .subscribe(subjects => {
+        this.subjects = subjects;
+      }, error => {})
 
     this._universityService.list()
       .subscribe(universities => {
@@ -64,7 +70,7 @@ export class SubjectComponent {
       .subscribe(success => {
         this._router.navigate([''])
       }, error => {
-        this.createApplicationError = error.json();
+        this.subjectError = error.json();
       });
   }
 

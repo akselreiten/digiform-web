@@ -43,7 +43,7 @@ export class CreateSubjectComponent {
     this._subjectService.createSubject(fg.value)
 
       .subscribe(success => {
-        this._router.navigate([''])
+        this._router.navigate(['subjects'])
       }, error => {
         this.createSubjectError = error.json();
       });

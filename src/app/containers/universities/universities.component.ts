@@ -18,10 +18,12 @@ export class UniversityComponent {
   public test:string = 'Hey';
 
   constructor(
-    private _universityService:UniversityService,
+    private _universityService:UniversityService
 
 
-  ) {
+
+
+) {
 
     this._universityService.list()
       .subscribe(universities => {

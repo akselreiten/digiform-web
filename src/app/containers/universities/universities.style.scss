@@ -62,21 +62,23 @@ html, body {
 .inner-panes-container {
   display: flex;
   width: 100%;
-  height: 80%;
+  height: 70%;
   overflow: hidden;
   margin: 0;
   padding: 0;
 }
 
 .left-inner-pane {
-  width: 50%;
+  padding: 1%;
+  width: 30%;
   height:100%;
   background: #eee;
 }
 
 .right-inner-pane {
-  width: 50%;
+  width: 70%;
   height: 100%;
+  padding: 1%;
   background: #eee;
 }
 

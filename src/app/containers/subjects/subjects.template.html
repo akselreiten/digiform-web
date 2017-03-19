@@ -22,67 +22,78 @@
       <br>
       <h1>Subjects</h1>
       <br>
-      <form class="login-form" (ngSubmit)="createSubjectNavigate()">
-        <button type="submit">Add subject</button>
-      </form>
 
       <br><br><br>
-      <div class= "inner-panes-container">
-        <div class = "right-inner-pane">
+      <div class="inner-panes-container">
+        <div class="left-inner-pane">
           <h3>Search Subjects</h3>
+
+          <form #f="ngForm" class="login-form" (ngSubmit)="pass">
+
+            <!-- University -->
+            <select name="university" id="university" ngModel>
+              <option value="" disabled selected>Velg et universitet i utlandet</option>
+              <option value="{{uni.id}}" *ngFor="let uni of universities">{{uni.title}}</option>
+            </select>
+            <br><br>
+            <!-- Replacement subject -->
+
+            <input type="text" name="title" id="title" placeholder="Fagnavn inneholder" ngModel>
+            <br><br>
+
+            <!--Course code -->
+            <input type="text" name="courseCode" id="courseCode" placeholder="Fagkode" ngModel>
+
+            <!--Approval status-->
+            <select name="approval" id="approval" ngModel>
+              <option value="" disabled selected>Status godkjenning</option>
+              <option value="STATUS_PROCESSING">Under behandling</option>
+              <option value="STATUS_APPROVED">Godkjent</option>
+              <option value="STATUS_DECLINED">Ikke godkjent</option>
+            </select>
+
+            <!-- Error -->
+            <p *ngFor="let e of subjectError?.non_field_errors">{{e}}</p>
+            <br><br>
+            <button type="submit">Search</button>
+
+          </form>
+          <br><br>
+          <form class="login-form" (ngSubmit)="createSubjectNavigate()">
+            <button type="submit">Add a new subject</button>
+          </form>
+
         </div>
 
         <div class="panes-separator" id="panes-separator"></div>
 
-        <div class = "left-inner-pane">
+        <div class="right-inner-pane">
           <h3>Results</h3>
+          <p><i>
+            Dette er inntil videre litt hardkodet. Klarer enda ikke sende infoen fra skjemaet til høyre inn som et
+            query.
+          </i></p>
+          <br>
+
+          <table align="center">
+
+            <tr>
+              <th align="left">Subject name</th>
+              <th align="left">University</th>
+              <th align="left">Course code</th>
+            </tr>
+            <tr *ngFor="let subject of subjects; let i=index">
+
+              <td align="left">{{subject.title}}</td>
+              <td align="left">{{subject.university.title}}</td>
+              <td align="left">{{subject.courseCode}}</td>
+
+            </tr>
+          </table>
+
         </div>
       </div>
 
-
-
-      <!--
-      <form #f="ngForm" class="login-form" (ngSubmit)="createApplication(f)">
-
-
-        <select name="ntnu_subject" id="ntnu_subject" ngModel required>
-          <option value="" disabled selected>Velg et fag fra NTNU</option>
-          <option value="{{subject.id}}" *ngFor="let subject of NTNUsubjects">{{subject.title}}</option>
-        </select>
-
-        <br><br>
-
-        <select (change)="getUniSubjects($event)" name="university" id="university" ngModel required>
-          <option value="" disabled selected>Velg et universitet i utlandet</option>
-          <option value="{{uni.id}}" *ngFor="let uni of universities">{{uni.title}}</option>
-        </select>
-        <br><br>
-
-
-        <select name="replacing_subject" id="replacing_subject" ngModel required>
-          <option value="" disabled selected>{{replacementPlaceholderString}}</option>
-          <option value="{{subject.id}}" *ngFor="let subject of subjects">{{subject.title}}</option>
-        </select>
-
-        <br><br>
-
-        <textarea rows="7" cols="40" style="border: none; resize: none" name="subject_information"
-                  id="subject_information" placeholder="Subject Information (Optional)"></textarea>
-        <br><br>
-
-        <input type="number" name="credits_ntnu" id="credits_ntnu" placeholder="Credits (NTNU)" ngModel required>
-        <br><br>
-
-
-        <textarea rows="7" cols="40" style="border: none; resize: none" name="justification" id="justification"
-                  placeholder="Approval justification (optional)" ngModel></textarea>
-
-        <br><br>
-
-        <p *ngFor="let e of createApplicationError?.non_field_errors">{{e}}</p>
-
-        <button type="submit">Apply</button>
-      </form>-->
     </div>
   </div>
   </body>
