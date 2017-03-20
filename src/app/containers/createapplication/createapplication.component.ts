@@ -22,14 +22,19 @@ export class CreateApplicationComponent {
   public subjects:any[] = [];
   public NTNUsubjects:any[] = [];
   public replacementPlaceholderString:string;
+  public subjectCode:string;
+  public chosenNtnuSubject:any;
+  public chosenForeignSubject:any;
 
   constructor(private _applicationService: ApplicationService,
               private _universityService: UniversityService,
+              private _subjectService:SubjectService,
               private _router: Router) {
 
     this._universityService.list()
       .subscribe(universities => {
         this.universities = universities;
+        this.universities = this.universities.slice(1);
       }, error => {});
 
     this._universityService.listSubjects(1)
@@ -40,10 +45,24 @@ export class CreateApplicationComponent {
     this.replacementPlaceholderString = "Velg først universitet";
   }
 
+  public getSubjectByID(event,bool){
+
+    let id = event.target.value;
+
+    this._subjectService.getSubject(id)
+      .subscribe(subject => {
+        if(bool){
+          this.chosenNtnuSubject = subject[0].title;
+        } else {
+          this.chosenForeignSubject = subject[0].title;
+        }
+      }, error => {});
+  }
+
+
   public getUniSubjects(event){
 
     let id = event.target.value;
-    let foreignUniString = event.target.value.title;
 
     if (id > 0){
       this.replacementPlaceholderString = "Velg et fag fra valgte universitet";
@@ -55,6 +74,10 @@ export class CreateApplicationComponent {
       .subscribe(subjects => {
         this.subjects = subjects;
       }, error => {});
+  }
+
+  public updateSubjectCode(event){
+    let id = event.target.value;
   }
 
   public createApplication(fg: FormGroup) {

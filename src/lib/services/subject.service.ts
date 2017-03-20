@@ -23,4 +23,9 @@ export class SubjectService {
     return this._api.request('POST', url, null, data)
   }
 
+  public getSubject(id) {
+    return this._api.request('GET', this._url + id + "/")
+      .map(res => res.json());
+  }
+
 }

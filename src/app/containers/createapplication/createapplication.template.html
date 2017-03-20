@@ -7,7 +7,7 @@
     <div class="left-pane" id="left-pane">
       <br>
       <a href="#">
-        <img src="\assets\img\logo.png" alt="Digiform." style="width:140px;height:auto;"></a>
+        <img src="\assets\img\logo.png" alt="Digiform." style="max-width: 100%;max-height: 100%;width:140px;"></a>
       <br>
       <br>
       <a href="#">Home</a><br>
@@ -23,29 +23,50 @@
       <br>
       <h1>New application</h1>
 
+
+
       <form #f="ngForm" class="login-form" (ngSubmit)="createApplication(f)">
 
         <!-- NTNU subject -->
-        <select name="ntnu_subject" id="ntnu_subject" ngModel required>
+
+        <select style="width:100%" (change)="getSubjectByID($event,true)" name="ntnu_subject" id="ntnu_subject" ngModel required>
           <option value="" disabled selected>Velg et fag fra NTNU</option>
-          <option value="{{subject.id}}" *ngFor="let subject of NTNUsubjects">{{subject.title}}</option>
+          <option value="{{subject.id}}" *ngFor="let subject of NTNUsubjects">{{subject.courseCode}}</option>
         </select>
+
+        <p style="font-size: 90%;" align="left"> NTNU-fag: {{chosenNtnuSubject}}</p>
+
+        <!--
+        <input (change)="updateSubjectCode($event)" type="text" placeholder="Velg et fag fra NTNU" name="ntnu_subject" list="ntnu_subject" ngModel required>
+        <datalist id="ntnu_subject">
+          <option value="{{subject.id}}" *ngFor="let subject of NTNUsubjects">{{subject.title}}</option>
+        </datalist>
+        -->
+
         <!--<input type="text" name="ntnu_subject" id="ntnu_subject" placeholder="Choose subject" ngModel required> -->
-        <br><br>
         <!-- University -->
-        <select (change)="getUniSubjects($event)" name="university" id="university" ngModel required>
+        <select style="width:100%" (change)="getUniSubjects($event)" name="university" id="university" ngModel required>
           <option value="" disabled selected>Velg et universitet i utlandet</option>
           <option value="{{uni.id}}" *ngFor="let uni of universities">{{uni.title}}</option>
         </select>
         <br><br>
         <!-- Replacement subject -->
 
-        <select name="replacing_subject" id="replacing_subject" ngModel required>
+        <!--
+        <input placeholder={{replacementPlaceholderString}} type="text" name="replacing_subject" list="replacing_subject" ngModel required>
+        <datalist id="replacing_subject">
           <option value="" disabled selected>{{replacementPlaceholderString}}</option>
           <option value="{{subject.id}}" *ngFor="let subject of subjects">{{subject.title}}</option>
+        </datalist>
+        -->
+
+        <select style="width:100%" (change)="getSubjectByID($event,false)" name="replacing_subject" id="replacing_subject" ngModel required>
+          <option value="" disabled selected>{{replacementPlaceholderString}}</option>
+          <option value="{{subject.id}}" *ngFor="let subject of subjects">{{subject.courseCode}}</option>
         </select>
 
-        <br><br>
+        <p style="font-size: 90%;" align="left"> Fag i utlandet: {{chosenForeignSubject}}</p>
+
         <!-- Subject information -->
         <textarea rows="7" cols="40" style="border: none; resize: none" name="subject_information"
                   id="subject_information" placeholder="Subject Information (Optional)" ngModel></textarea>
