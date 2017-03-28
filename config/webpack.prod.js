@@ -24,11 +24,17 @@ const OptimizeJsPlugin = require('optimize-js-plugin');
 const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
 const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 8080;
+const API_HOST = process.env.API_HOST || 'secure-earth-88278.herokuapp.com';
+const API_PORT = process.env.API_PORT || '';
+const API_PROTOCOL = process.env.API_PROTOCOL || 'https';
 const METADATA = webpackMerge(commonConfig({
   env: ENV
 }).metadata, {
   host: HOST,
   port: PORT,
+  API_HOST:API_HOST,
+  API_PORT:API_PORT,
+  API_PROTOCOL:API_PROTOCOL,
   ENV: ENV,
   HMR: false
 });
@@ -157,10 +163,16 @@ module.exports = function (env) {
       new DefinePlugin({
         'ENV': JSON.stringify(METADATA.ENV),
         'HMR': METADATA.HMR,
+        'API_HOST':JSON.stringify(METADATA.API_HOST),
+        'API_PORT':JSON.stringify(METADATA.API_PORT),
+        'API_PROTOCOL':JSON.stringify(METADATA.API_PROTOCOL),
         'process.env': {
           'ENV': JSON.stringify(METADATA.ENV),
           'NODE_ENV': JSON.stringify(METADATA.ENV),
           'HMR': METADATA.HMR,
+          'API_HOST':JSON.stringify(METADATA.API_HOST),
+          'API_PORT':JSON.stringify(METADATA.API_PORT),
+          'API_PROTOCOL':JSON.stringify(METADATA.API_PROTOCOL)
         }
       }),
 

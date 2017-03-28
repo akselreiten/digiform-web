@@ -4,11 +4,13 @@ import 'rxjs/Rx';
 import {Injectable}                     from '@angular/core';
 
 import {Api} from './api.service';
+import {API_URL} from "../../app/app.module";
 
 @Injectable()
 export class SubjectService {
 
-  private _url:string = 'http://localhost:8000/subjects/';
+  private _url:string = `${API_URL}/subjects/`;
+
 
   constructor(private _api:Api) {}
 

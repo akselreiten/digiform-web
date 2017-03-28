@@ -158,3 +158,5 @@ export class AppModule {
   }
 
 }
+
+export const API_URL:string = `${API_PROTOCOL}://${API_HOST}:${API_PORT}`;
