@@ -7,7 +7,7 @@
     <div class="left-pane" id="left-pane">
       <br>
       <a href="#">
-        <img src="\assets\img\logo.png" alt="Digiform." style="width:140px;height:auto;"></a>
+        <img src="\assets\img\logo.png" alt="Digiform." style="max-width: 100%;max-height: 100%;width:140px;"></a>
       <br>
       <br>
       <a href="#">Home</a><br>
@@ -42,20 +42,27 @@
             <br><br>
 
             <!--Course code -->
-            <input type="text" name="courseCode" id="courseCode" placeholder="Fagkode" ngModel>
+            <p class="control">
+              <input class="input" type="text" name="courseCode" id="courseCode" placeholder="Fagkode" ngModel>
+            </p>
 
             <!--Approval status-->
-            <select name="approval" id="approval" ngModel>
-              <option value="" disabled selected>Status godkjenning</option>
-              <option value="STATUS_PROCESSING">Under behandling</option>
-              <option value="STATUS_APPROVED">Godkjent</option>
-              <option value="STATUS_DECLINED">Ikke godkjent</option>
-            </select>
+            <p class="control center">
+              <span class="select">
+                <select name="approval" id="approval" ngModel>
+                  <option value="" disabled selected>Status godkjenning</option>
+                  <option value="STATUS_PROCESSING">Under behandling</option>
+                  <option value="STATUS_APPROVED">Godkjent</option>
+                  <option value="STATUS_DECLINED">Ikke godkjent</option>
+                </select>
+              </span>
+            </p>
+
 
             <!-- Error -->
             <p *ngFor="let e of subjectError?.non_field_errors">{{e}}</p>
             <br><br>
-            <button type="submit">Search</button>
+            <button class="button is-primary" type="submit">Search</button>
 
           </form>
           <br><br>

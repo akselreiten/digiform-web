@@ -4,11 +4,12 @@ import 'rxjs/Rx';
 import {Injectable}                     from '@angular/core';
 
 import {Api} from './api.service';
+import {API_URL} from "../../app/app.module";
 
 @Injectable()
 export class ApplicationService{
 
-  private _url: string = 'http://localhost:8000/application/';
+  private _url:string = `${API_URL}/application/`;
 
   constructor(private _api: Api) {
   }

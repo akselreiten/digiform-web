@@ -21,10 +21,16 @@ const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
 const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 3000;
+const API_HOST = process.env.API_HOST || 'localhost';
+const API_PORT = process.env.API_PORT || '8000';
+const API_PROTOCOL = process.env.API_PROTOCOL || 'http';
 const HMR = helpers.hasProcessFlag('hot');
 const METADATA = webpackMerge(commonConfig({env: ENV}).metadata, {
   host: HOST,
   port: PORT,
+  API_HOST:API_HOST,
+  API_PORT:API_PORT,
+  API_PROTOCOL:API_PROTOCOL,
   ENV: ENV,
   HMR: HMR
 });
@@ -146,10 +152,16 @@ module.exports = function (options) {
       new DefinePlugin({
         'ENV': JSON.stringify(METADATA.ENV),
         'HMR': METADATA.HMR,
+        'API_HOST':JSON.stringify(METADATA.API_HOST),
+        'API_PORT':JSON.stringify(METADATA.API_PORT),
+        'API_PROTOCOL':JSON.stringify(METADATA.API_PROTOCOL),
         'process.env': {
           'ENV': JSON.stringify(METADATA.ENV),
           'NODE_ENV': JSON.stringify(METADATA.ENV),
           'HMR': METADATA.HMR,
+          'API_HOST':JSON.stringify(METADATA.API_HOST),
+          'API_PORT':JSON.stringify(METADATA.API_PORT),
+          'API_PROTOCOL':JSON.stringify(METADATA.API_PROTOCOL)
         }
       }),
 
