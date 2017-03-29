@@ -35,7 +35,7 @@
       <br>
       <h1>Chat - under development!</h1>
 
-      <!--
+
       <br>
       <form class="login-form" (ngSubmit)="createApplicationNavigate()">
         <button type="submit">New application</button>
@@ -51,15 +51,12 @@
           <th>Application ID</th>
           <th>Application Status</th>
         </tr>
-        <tr *ngFor="let app of applications; let i=index">
-          <td>{{app.ntnu_subject.title}}</td>
-          <td>{{app.replacing_subject?.university?.title}}</td>
-          <td>{{app.replacing_subject?.title}}</td>
-          <td>{{app.id}}</td>
-          <td>{{app.application_status}}</td>
+        <tr *ngFor="let msg of messages; let i=index">
+          <td>{{msg.sender?.first_name}}</td>
+          <td>{{msg.text}}</td>
         </tr>
       </table>
-      -->
+
     </div>
 
   </div>

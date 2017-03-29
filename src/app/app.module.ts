@@ -49,6 +49,7 @@ import {
   UniversityService,
   ApplicationService,
 } from '../lib/services';
+import {ChatService} from "../lib/services/chat.service";
 
 
 function authHttpServiceFactory(http: Http, options: RequestOptions) {
@@ -104,6 +105,8 @@ type StoreType = {
     AuthGuard,
     UniversityService,
     ApplicationService,
+    ChatService,
+
 
     {
       provide: AuthHttp,

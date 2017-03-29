@@ -5,7 +5,7 @@ import {Router} from "@angular/router";
 import {
   SubjectService
 } from '../../../lib/services'
-import {ApplicationService} from "../../../lib/services/application.service";
+import {ChatService} from "../../../lib/services/chat.service";
 
 
 @Component({
@@ -16,27 +16,19 @@ import {ApplicationService} from "../../../lib/services/application.service";
 
 export class ChatComponent {
 
-  public subjects:any[] = [];
-  public applications:any[] = [];
-
+  public messages:any[] = [];
 
   public test:string = 'Hey';
 
   constructor(
-    private _subjectService:SubjectService,
-    private _applicationService:ApplicationService,
+    private _chatService:ChatService,
     private _router:Router
 
   ) {
 
-    this._subjectService.list()
-      .subscribe(subjects => {
-        this.subjects = subjects;
-      }, error => {})
-
-    this._applicationService.list()
-      .subscribe(applications => {
-        this.applications = applications;
+    this._chatService.list()
+      .subscribe(messages => {
+        this.messages = messages;
       }, error => {})
   }
 
