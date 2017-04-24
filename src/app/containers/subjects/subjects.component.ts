@@ -21,6 +21,8 @@ export class SubjectComponent {
   public universities:any[] = [];
   public subjects:any[] = [];
   public NTNUsubjects:any[] = [];
+  public chosenNtnuSubject:any;
+  public chosenForeignSubject:any;
   public replacementPlaceholderString:string;
 
   constructor(private _applicationService: ApplicationService,
@@ -44,6 +46,20 @@ export class SubjectComponent {
       }, error => {});
 
     this.replacementPlaceholderString = "Velg først universitet";
+  }
+
+  public getSubjectByID(event,bool){
+
+    let id = event.target.value;
+
+    this._subjectService.getSubject(id)
+      .subscribe(subject => {
+        if(bool){
+          this.chosenNtnuSubject = subject[0].title;
+        } else {
+          this.chosenForeignSubject = subject[0].title;
+        }
+      }, error => {});
   }
 
   public getUniSubjects(event){
