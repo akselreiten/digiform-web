@@ -1,3 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <style type="home/css">
+  </style>
+
+</head>
+
+<body>
+
+<nav class="nav has-shadow">
+  <div class="container">
+    <div class="nav-left">
+      <a class="nav-item">
+        <img src="\assets\img\logo.png" alt="Digiform logo">
+      </a>
+      <a class="nav-item is-tab is-hidden-mobile" href="#">Home</a>
+      <a class="nav-item is-tab is-hidden-mobile is-active" href="#subjects">Subjects</a>
+      <a class="nav-item is-tab is-hidden-mobile" href="#universities">Universities</a>
+      <a class="nav-item is-tab is-hidden-mobile" href="#chat">Chat</a>
+    </div>
+    <span class="nav-toggle" id="nav-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </span>
+    <div class="nav-right nav-menu" id="nav-menu">
+      <a class="nav-item is-tab">
+        <figure class="image is-16x16" style="margin-right: 8px;">
+          <img src="\assets\img\unkwown_profile.png">
+        </figure>
+        Profile
+      </a>
+      <a class="nav-item is-tab">Log out</a>
+    </div>
+  </div>
+</nav>
+
+
+<section class="hero is-light">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Add New Subjects
+      </h1>
+      <h2 class="subsubtitle">
+        Add a new subject to NTNUs database
+      </h2>
+    </div>
+
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container">
+
+    <form #f="ngForm" class="login-form" (ngSubmit)="createApplication(f)">
+
+
+      <!-- Foreign university -->
+      <div class="field is-mobile">
+        <label class="label">Exchange university</label>
+        <span class="select dropdown-fill">
+          <select style="width:100%" (change)="getUniSubjects($event)" name="university" id="university" ngModel
+                  required>
+            <option value="" disabled selected>Choose exchange university</option>
+            <option value="{{uni.id}}" *ngFor="let uni of universities">{{uni.title}}</option>
+          </select>
+        </span>
+      </div>
+
+
+      <!-- Replacement subject -->
+      <div class="field">
+        <label class="label">Exchange university subject</label>
+        <input class="input" type="text" name="title" id="title" placeholder="Fagnavn" ngModel required>
+      </div>
+
+
+      <!--Course code -->
+      <div class="field">
+        <label class="label">Course code</label>
+        <input class="input" type="text" name="courseCode" id="courseCode" placeholder="Fagkode" ngModel required>
+      </div>
+
+
+      <!-- Credits -->
+      <div class="field">
+        <label class="label">Subject Credits</label>
+        <input class="input" type="number" name="credits_ntnu" id="credits_ntnu"
+               placeholder="Credits (Converted to NTNU-credits)" ngModel required>
+      </div>
+
+
+      <!-- Subject information-->
+      <div class="field">
+        <label class="label">Subject Information (Optional)</label>
+        <p class="control">
+          <textarea class="textarea" placeholder="Please provide us with information about the class"></textarea>
+        </p>
+      </div>
+
+
+      <!-- Error -->
+      <p *ngFor="let e of createApplicationError?.non_field_errors">{{e}}</p>
+
+      <button class="button is-success" type="submit">Create</button>
+      <button class="button is-warning">Reset</button>
+      <button class="button is-danger">Quit</button>
+
+    </form>
+
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <p>
+        <strong>Digiform</strong> by <a href="http://github.com/akselreiten">Group XX</a>. The source code is licensed
+        <a href="http://opensource.org/licenses/mit-license.php">NTNU</a>. The website content
+        is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC ANS 4.0</a>.
+      </p>
+      <p>
+        <a class="icon" href="https://github.com/jgthms/bulma">
+          <i class="fa fa-github"></i>
+        </a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+
+
+</body>
+
+
+
+<!-- DELETE EVERYTHING HERE AND DOWN -->
+
 <div class="heading">
 
   <body>

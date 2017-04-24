@@ -1,87 +1,153 @@
-<div class="heading">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <style type="home/css">
+  </style>
+</head>
 
-  <body>
+<body>
 
-  <div class="panes-container">
 
-    <div class="left-pane" id="left-pane">
-      <br>
-      <a href="#">
-        <img src="\assets\img\logo.png" alt="Digiform." style="max-width: 100%;max-height: 100%;width:140px;"></a>
-      <br>
-      <br>
-      <a href="#">Home</a><br>
-      <a href="#subjects">Subjects</a><br>
-      <a href="#universities"><b>Universities</b></a><br>
-      <a href="#chat">Chat</a><br>
-      <a href="#profile">My profile</a><br>
-      <a href="#help">Help</a>
-
+<nav class="nav has-shadow">
+  <div class="container">
+    <div class="nav-left">
+      <a class="nav-item">
+        <img src="\assets\img\logo.png" alt="Digiform logo">
+      </a>
+      <a class="nav-item is-tab is-hidden-mobile" href="#">Home</a>
+      <a class="nav-item is-tab is-hidden-mobile" href="#subjects">Subjects</a>
+      <a class="nav-item is-tab is-hidden-mobile is-active" href="#universities">Universities</a>
+      <a class="nav-item is-tab is-hidden-mobile" href="#chat">Chat</a>
     </div>
-    <div class="right-pane" id="right-pane">
-      <br>
-      <h1>Universities</h1>
-      <br>
-
-      <br><br><br>
-      <div class="inner-panes-container">
-        <div class="left-inner-pane">
-          <h3>Search Universities</h3>
-
-          <form #f="ngForm" class="login-form" (ngSubmit)="pass">
-
-            <!-- University title -->
-
-            <input type="text" name="title" id="title" placeholder="Navn inneholder" ngModel>
-            <br><br>
-
-            <!-- City -->
-
-            <input type="text" name="city" id="city" placeholder="By" ngModel>
-            <br><br>
-
-            <!--Country -->
-            <input type="text" name="country" id="country" placeholder="Land" ngModel>
-
-
-            <!-- Error -->
-            <p *ngFor="let e of subjectError?.non_field_errors">{{e}}</p>
-            <br><br>
-            <button type="submit">Search</button>
-          </form>
-        </div>
-
-        <div class="panes-separator" id="panes-separator"></div>
-
-        <div class="right-inner-pane">
-          <h3>Results</h3>
-          <p><i>
-            Dette er inntil videre litt hardkodet. Klarer enda ikke sende infoen fra skjemaet til høyre inn som et
-            query.
-          </i></p>
-          <br>
-
-          <table align="center">
-
-            <tr>
-              <th>Name</th>
-              <th>City</th>
-              <th>Country</th>
-            </tr>
-            <tr *ngFor="let uni of universities; let i=index">
-
-              <td>{{uni.title}}</td>
-              <td>{{uni.city}}</td>
-              <td>{{uni.country}}</td>
-
-            </tr>
-          </table>
-
-        </div>
-      </div>
-
-
+    <span class="nav-toggle" id="nav-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </span>
+    <div class="nav-right nav-menu" id="nav-menu">
+      <a class="nav-item is-tab" href="#profile">
+        <figure class="image is-16x16" style="margin-right: 8px;">
+          <img src="\assets\img\unkwown_profile.png">
+        </figure>
+        Profile
+      </a>
+      <a class="nav-item is-tab">Log out</a>
     </div>
   </div>
-  </body>
-</div>
+</nav>
+
+
+<section class="hero is-light">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Universities
+      </h1>
+      <h2 class="subsubtitle">
+        Search for universities previous students have attended and get inspired.
+      </h2>
+    </div>
+
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container columns">
+
+    <div class="column search-section-left is-half">
+
+      <!--
+      <div class="heading">
+        <h2 class="subtitle">
+          Search for universities
+        </h2>
+        <br>
+      </div>
+      -->
+
+      <form #f="ngForm" class="login-form" (ngSubmit)="pass">
+
+        <!-- University title -->
+        <div class="field search-input">
+          <input class="input" type="text" name="title" id="title" placeholder="University name contains" ngModel>
+        </div>
+
+        <!-- City -->
+        <div class="field search-input">
+          <input class="input" type="text" name="city" id="city" placeholder="City" ngModel>
+        </div>
+
+        <!--Country -->
+        <div class="field search-input">
+          <input class="input" type="text" name="country" id="country" placeholder="Country" ngModel>
+        </div>
+
+        <!-- Error -->
+        <div class="field search-input">
+          <p *ngFor="let e of subjectError?.non_field_errors">{{e}}</p>
+          <button class="button is-primary" type="submit">Search</button>
+        </div>
+
+      </form>
+
+
+    </div>
+
+
+    <div class="column is-half">
+
+    <!--  <div class="heading">
+        <h2 class="subtitle">
+          Results
+        </h2>
+        <br>
+      </div>
+      -->
+
+      <table class="table is-striped">
+        <thead>
+        <tr>
+          <th>Name</th>
+          <th>City</th>
+          <th>Country</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr *ngFor="let uni of universities; let i=index">
+          <td>{{uni.title}}</td>
+          <td>{{uni.city}}</td>
+          <td>{{uni.country}}</td>
+        </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <p>
+        <strong>Digiform</strong> by <a href="http://github.com/akselreiten">Group XX</a>. The source code is licensed
+        <a href="http://opensource.org/licenses/mit-license.php">NTNU</a>. The website content
+        is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC ANS 4.0</a>.
+      </p>
+      <p>
+        <a class="icon" href="https://github.com/jgthms/bulma">
+          <i class="fa fa-github"></i>
+        </a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
+

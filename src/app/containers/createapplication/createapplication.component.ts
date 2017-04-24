@@ -42,7 +42,7 @@ export class CreateApplicationComponent {
         this.NTNUsubjects = subjects;
       }, error => {});
 
-    this.replacementPlaceholderString = "Velg først universitet";
+    this.replacementPlaceholderString = "Please choose exchange university first";
   }
 
   public getSubjectByID(event,bool){
@@ -65,9 +65,9 @@ export class CreateApplicationComponent {
     let id = event.target.value;
 
     if (id > 0){
-      this.replacementPlaceholderString = "Velg et fag fra valgte universitet";
+      this.replacementPlaceholderString = "Pick a subject from chosen university";
     } else {
-      this.replacementPlaceholderString = "Velg først universitet";
+      this.replacementPlaceholderString = "Please choose university first";
     }
 
     this._universityService.listSubjects(id)

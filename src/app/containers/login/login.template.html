@@ -1,34 +1,42 @@
-<div class="heading">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <style type="home/css">
+  </style>
 
-  <br><br>
+</head>
 
-  <img src="\assets\img\logo.png" alt="Digiform." style="width:400px;height:auto;">
-
-  <h1>Login</h1>
-  <!--<p *ngFor="let subject of subjects">{{subject.title}}</p>-->
-
-  <form #f="ngForm" class="login-form" (ngSubmit)="login(f)">
-
-    <!-- Username -->
-    <input type="text" name="username" id="username" placeholder="Username" ngModel required>
-
-    <!-- Password -->
-    <input type="password" name="password" id="password" placeholder="Password" ngModel required>
-
-    <!-- Login error -->
-    <p *ngFor="let e of loginError?.non_field_errors">{{e}}</p>
-
-    <button type="submit">Login</button>
-
-  </form>
-
-  <br>
-  <br>
-
-  <form class="login-form" (ngSubmit)="createUserNavigate()">
-    <button type="submit">New user?</button>
-
-  </form>
+<body>
 
 
-</div>
+<section class="section">
+  <div class="container">
+    <div class="heading columns" align="center">
+
+      <div class="column is-half is-offset-one-quarter">
+
+        <img src="\assets\img\logo.png" alt="Digiform." style="width:200px;height:auto;"><br><br>
+
+        <form #f="ngForm" class="login-form" (ngSubmit)="login(f)">
+          <input class="input user-credential-box" type="text" name="username" id="username" placeholder="Username" ngModel required>
+          <input class="input user-credential-box" type="password" name="password" id="password" placeholder="Password" ngModel required>
+          <p *ngFor="let e of loginError?.non_field_errors">{{e}}</p>
+          <br><br>
+          <button class="button is-primary" type="submit">Login</button>
+        </form>
+
+        <form class="login-form" (ngSubmit)="createUserNavigate()">
+          <button class="button is-warning" type="submit">New user?</button>
+        </form>
+
+
+      </div>
+
+
+    </div>
+  </div>
+</section>
+
+
+</body>

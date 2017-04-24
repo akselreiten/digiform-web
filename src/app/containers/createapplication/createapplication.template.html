@@ -1,7 +1,199 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <style type="home/css">
+  </style>
+
+</head>
+
+<body>
+
+<nav class="nav has-shadow">
+  <div class="container">
+    <div class="nav-left">
+      <a class="nav-item">
+        <img src="\assets\img\logo.png" alt="Digiform logo">
+      </a>
+      <a class="nav-item is-tab is-hidden-mobile is-active" href="#">Home</a>
+      <a class="nav-item is-tab is-hidden-mobile" href="#subjects">Subjects</a>
+      <a class="nav-item is-tab is-hidden-mobile" href="#universities">Universities</a>
+      <a class="nav-item is-tab is-hidden-mobile" href="#chat">Chat</a>
+    </div>
+    <span class="nav-toggle" id="nav-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </span>
+    <div class="nav-right nav-menu" id="nav-menu">
+      <a class="nav-item is-tab" href="#profile">
+        <figure class="image is-16x16" style="margin-right: 8px;">
+          <img src="\assets\img\unkwown_profile.png">
+        </figure>
+        Profile
+      </a>
+      <a class="nav-item is-tab">Log out</a>
+    </div>
+  </div>
+</nav>
+
+
+<section class="hero is-light">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        New application
+      </h1>
+      <h2 class="subsubtitle">
+        Please fill in the form before submitting your application
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container">
+
+    <form #f="ngForm" class="login-form" (ngSubmit)="createApplication(f)">
+
+      <!-- NTNU Subject -->
+
+      <label class="label">NTNU Subject</label>
+
+      <div class="field columns is-mobile">
+
+        <div class="column is-one-third is-gapless">
+          <span class="select dropdown-fill">
+            <select style="width:100%" (change)="getSubjectByID($event,true)" name="ntnu_subject" id="ntnu_subject"
+                    ngModel
+                    required>
+              <option value="" disabled selected>Choose a subject from NTNU</option>
+              <option value="{{subject.id}}" *ngFor="let subject of NTNUsubjects">{{subject.courseCode}}</option>
+            </select>
+          </span>
+        </div>
+
+        <div class="column">
+          <p align="left"> {{chosenNtnuSubject}}</p>
+        </div>
+
+      </div>
+
+
+      <!-- Foreign university -->
+
+      <label class="label">Exchange university</label>
+      <div class="field columns is-mobile">
+
+        <div class="column is-one-third is-gapless ">
+          <span class="select dropdown-fill">
+              <select style="width:100%" (change)="getUniSubjects($event)" name="university" id="university" ngModel
+                      required>
+                <option value="" disabled selected>Choose exchange university</option>
+                <option value="{{uni.id}}" *ngFor="let uni of universities">{{uni.title}}</option>
+              </select>
+          </span>
+        </div>
+
+      </div>
+
+
+      <!-- Foreign university subject -->
+
+      <label class="label">Exchange university subject</label>
+
+      <div class="field columns is-mobile">
+
+        <div class="column is-one-third is-gapless dropdown-fill">
+          <span class="select dropdown-fill">
+                    <select style="width:100%" (change)="getSubjectByID($event,false)" name="replacing_subject"
+                            id="replacing_subject" ngModel required>
+                      <option value="" disabled selected>{{replacementPlaceholderString}}</option>
+                      <option value="{{subject.id}}" *ngFor="let subject of subjects">{{subject.courseCode}}</option>
+                    </select>
+          </span>
+        </div>
+
+        <div class="column">
+          <p align="left"> {{chosenForeignSubject}}</p>
+        </div>
+
+      </div>
+
+
+      <!-- Credits -->
+      <div class="field">
+        <label class="label">Subject Credits</label>
+        <p class="control">
+          <input class="input" type="number" name="credits_ntnu" id="credits_ntnu"
+                 placeholder="Credits (Converted to NTNU-credits)" ngModel required>
+        </p>
+      </div>
+
+
+      <!-- Subject justification -->
+
+      <div class="field">
+        <label class="label">Subject justification </label>
+        <p class="control">
+          <textarea class="textarea" placeholder="Please justify why this class fits with your curriculum"></textarea>
+        </p>
+      </div>
+
+
+      <!-- Foreign university subject -->
+
+      <div class="field">
+        <label class="label">Subject Information (Optional)</label>
+        <p class="control">
+          <textarea class="textarea" placeholder="Please provide us with information about the class"></textarea>
+        </p>
+      </div>
+
+
+      <!-- Error -->
+      <p *ngFor="let e of createApplicationError?.non_field_errors">{{e}}</p>
+
+      <button class="button is-success" type="submit">Apply</button>
+      <button class="button is-warning">Reset</button>
+      <button class="button is-danger">Quit</button>
+
+    </form>
+
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <p>
+        <strong>Digiform</strong> by <a href="http://github.com/akselreiten">Group XX</a>. The source code is licensed
+        <a href="http://opensource.org/licenses/mit-license.php">NTNU</a>. The website content
+        is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC ANS 4.0</a>.
+      </p>
+      <p>
+        <a class="icon" href="https://github.com/jgthms/bulma">
+          <i class="fa fa-github"></i>
+        </a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+
+
+</body>
+
+</html>
+
+
+
+<!--
 <div class="heading">
-
   <body>
-
   <div class="panes-container">
 
     <div class="left-pane" id="left-pane">
@@ -27,7 +219,7 @@
 
       <form #f="ngForm" class="login-form" (ngSubmit)="createApplication(f)">
 
-        <!-- NTNU subject -->
+
 
         <select style="width:100%" (change)="getSubjectByID($event,true)" name="ntnu_subject" id="ntnu_subject" ngModel required>
           <option value="" disabled selected>Velg et fag fra NTNU</option>
@@ -45,6 +237,7 @@
 
         <!--<input type="text" name="ntnu_subject" id="ntnu_subject" placeholder="Choose subject" ngModel required> -->
         <!-- University -->
+<!--
         <select style="width:100%" (change)="getUniSubjects($event)" name="university" id="university" ngModel required>
           <option value="" disabled selected>Velg et universitet i utlandet</option>
           <option value="{{uni.id}}" *ngFor="let uni of universities">{{uni.title}}</option>
@@ -59,7 +252,7 @@
           <option value="{{subject.id}}" *ngFor="let subject of subjects">{{subject.title}}</option>
         </datalist>
         -->
-
+<!--
         <select style="width:100%" (change)="getSubjectByID($event,false)" name="replacing_subject" id="replacing_subject" ngModel required>
           <option value="" disabled selected>{{replacementPlaceholderString}}</option>
           <option value="{{subject.id}}" *ngFor="let subject of subjects">{{subject.courseCode}}</option>
@@ -68,20 +261,21 @@
         <p style="font-size: 90%;" align="left"> Fag i utlandet: {{chosenForeignSubject}}</p>
 
         <!-- Subject information -->
+<!--
         <textarea rows="7" cols="40" style="border: none; resize: none" name="subject_information"
                   id="subject_information" placeholder="Subject Information (Optional)" ngModel></textarea>
         <br><br>
         <!-- Credits (NTNU) -->
-        <input type="number" name="credits_ntnu" id="credits_ntnu" placeholder="Credits (NTNU)" ngModel required>
+<!--        <input type="number" name="credits_ntnu" id="credits_ntnu" placeholder="Credits (NTNU)" ngModel required>
         <br><br>
 
         <!-- Approval justification -->
-        <textarea rows="7" cols="40" style="border: none; resize: none" name="justification" id="justification"
+<!--        <textarea rows="7" cols="40" style="border: none; resize: none" name="justification" id="justification"
                   placeholder="Approval justification (optional)" ngModel></textarea>
 
         <br><br>
         <!-- Error -->
-        <p *ngFor="let e of createApplicationError?.non_field_errors">{{e}}</p>
+<!--        <p *ngFor="let e of createApplicationError?.non_field_errors">{{e}}</p>
 
         <button type="submit">Apply</button>
       </form>
@@ -89,3 +283,5 @@
   </div>
   </body>
 </div>
+
+-->

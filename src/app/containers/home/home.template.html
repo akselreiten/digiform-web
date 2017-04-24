@@ -1,69 +1,110 @@
-<div class="heading">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <style type="home/css">
+  </style>
+
+</head>
+
+<body>
 
 
-  <!DOCTYPE html>
-  <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-
-    <style type="home/css">
-    </style>
-
-  </head>
-
-  <body>
-
-
-
-  <div class="panes-container">
-
-    <div class="left-pane" id="left-pane">
-      <br>
-      <a href="#">
-      <img src="\assets\img\logo.png" alt="Digiform." style="max-width: 100%;max-height: 100%;width:140px;"></a>
-      <br>
-      <br>
-      <a href="#"><b>Home</b></a><br>
-      <a href="#subjects">Subjects</a><br>
-      <a href="#universities">Universities</a><br>
-      <a href="#chat">Chat</a><br>
-      <a href="#profile">My profile</a><br>
-      <a href="#help">Help</a>
-
+<nav class="nav has-shadow">
+  <div class="container">
+    <div class="nav-left">
+      <a class="nav-item">
+        <img src="\assets\img\logo.png" alt="Digiform logo">
+      </a>
+      <a class="nav-item is-tab is-hidden-mobile is-active" href="#">Home</a>
+      <a class="nav-item is-tab is-hidden-mobile" href="#subjects">Subjects</a>
+      <a class="nav-item is-tab is-hidden-mobile" href="#universities">Universities</a>
+      <a class="nav-item is-tab is-hidden-mobile" href="#chat">Chat</a>
     </div>
-    <div class="right-pane" id="right-pane">
-      <br>
-      <h1>Applications</h1>
-
-      <br>
-      <form class="login-form" (ngSubmit)="createApplicationNavigate()">
-        <button type="submit">New application</button>
-
-      </form>
-      <br><br><br>
-      <table align="center">
-
-        <tr>
-          <th>NTNU Subject</th>
-          <th>University</th>
-          <th>Replacement Subject</th>
-          <th>Application ID</th>
-          <th>Application Status</th>
-        </tr>
-        <tr *ngFor="let app of applications; let i=index">
-          <td>{{app.ntnu_subject.title}}</td>
-          <td>{{app.replacing_subject?.university?.title}}</td>
-          <td>{{app.replacing_subject?.title}}</td>
-          <td>{{app.id}}</td>
-          <td>{{app.application_status}}</td>
-        </tr>
-      </table>
+    <span class="nav-toggle" id="nav-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </span>
+    <div class="nav-right nav-menu" id="nav-menu">
+      <a class="nav-item is-tab" href="#profile">
+        <figure class="image is-16x16" style="margin-right: 8px;">
+          <img src="\assets\img\unkwown_profile.png">
+        </figure>
+        Profile
+      </a>
+      <a class="nav-item is-tab">Log out</a>
     </div>
+  </div>
+</nav>
+
+
+<section class="hero is-light">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Applications
+      </h1>
+      <h2 class="subsubtitle">
+        Manage all of your applications at once
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container">
+
+    <table class="table is-striped">
+      <thead>
+      <tr>
+        <th><abbr title="Your NTNU Subject">NTNU Subject</abbr></th>
+        <th><abbr title="University">University</abbr></th>
+        <th><abbr title="Replacement Subject">Replacement Subject</abbr></th>
+        <th><abbr title="Application ID">Application ID</abbr></th>
+        <th><abbr title="Application Status">Application Status</abbr></th>
+
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr *ngFor="let app of applications; let i=index">
+        <td>{{app.ntnu_subject.title}}</td>
+        <td>{{app.replacing_subject?.university?.title}}</td>
+        <td>{{app.replacing_subject?.title}}</td>
+        <td>{{app.id}}</td>
+        <td>{{app.application_status}}</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <form class="login-form" (ngSubmit)="createApplicationNavigate()">
+      <button class="button is-primary" type="submit">New application</button>
+    </form>
 
   </div>
+</section>
 
 
-  </body>
-  </html>
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <p>
+        <strong>Digiform</strong> by <a href="http://github.com/akselreiten">Group XX</a>. The source code is licensed
+        <a href="http://opensource.org/licenses/mit-license.php">NTNU</a>. The website content
+        is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC ANS 4.0</a>.
+      </p>
+      <p>
+        <a class="icon" href="https://github.com/jgthms/bulma">
+          <i class="fa fa-github"></i>
+        </a>
+      </p>
+    </div>
+  </div>
+</footer>
 
-</div>
+</body>
+
+
+</html>

@@ -1,0 +1,11 @@
+{
+  "vendor": {
+    "js": "vendor.743f459885b4aaea8880.bundle.js"
+  },
+  "main": {
+    "js": "main.3ab7940d8319cbfff9bc.bundle.js"
+  },
+  "polyfills": {
+    "js": "polyfills.fa1793ee0edf8f0520fc.bundle.js"
+  }
+}
