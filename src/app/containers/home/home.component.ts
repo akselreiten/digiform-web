@@ -19,9 +19,6 @@ export class HomeComponent {
   public subjects:any[] = [];
   public applications:any[] = [];
 
-
-  public test:string = 'Hey';
-
   constructor(
     private _subjectService:SubjectService,
     private _applicationService:ApplicationService,

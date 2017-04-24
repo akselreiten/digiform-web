@@ -2,10 +2,8 @@ import { Component } from '@angular/core';
 import {FormGroup} from "@angular/forms";
 import {Router} from "@angular/router";
 
-import {
-  SubjectService
-} from '../../../lib/services'
-import {ApplicationService} from "../../../lib/services/application.service";
+
+import {UserService} from "../../../lib/services/user.service";
 
 
 @Component({
@@ -16,36 +14,22 @@ import {ApplicationService} from "../../../lib/services/application.service";
 
 export class ProfileComponent {
 
-  public subjects:any[] = [];
-  public applications:any[] = [];
+  public ownProfile: any[] = [];
 
+  constructor(private _userService: UserService,
+              private _router: Router) {
 
-  public test:string = 'Hey';
-
-  constructor(
-    private _subjectService:SubjectService,
-    private _applicationService:ApplicationService,
-    private _router:Router
-
-  ) {
-
-    this._subjectService.list()
-      .subscribe(subjects => {
-        this.subjects = subjects;
-      }, error => {})
-
-    this._applicationService.list()
-      .subscribe(applications => {
-        this.applications = applications;
+    this._userService.getOwnProfile()
+      .subscribe(ownProfile => {
+        this.ownProfile = ownProfile;
       }, error => {})
   }
 
-  public login(fg:FormGroup) {
-    console.log(fg.value);
-
+  public logout(){
+    this._userService.logout()
+      .subscribe(success => {
+        this._router.navigate(['login'])
+      });
   }
 
-  public createApplicationNavigate(){
-    this._router.navigate(['createapplication']);
-  }
 }
