@@ -57,20 +57,20 @@
 <section class="section">
   <div class="container">
 
-    <form #f="ngForm" class="login-form" (ngSubmit)="createApplication(f)">
+    <form #f="ngForm" class="login-form" (ngSubmit)="createSubject(f)">
 
 
       <!-- Foreign university -->
       <div class="field is-mobile">
         <label class="label">Exchange university</label>
         <span class="select dropdown-fill">
-          <select style="width:100%" (change)="getUniSubjects($event)" name="university" id="university" ngModel
-                  required>
+          <select name="university" id="university" ngModel required>
             <option value="" disabled selected>Choose exchange university</option>
             <option value="{{uni.id}}" *ngFor="let uni of universities">{{uni.title}}</option>
           </select>
         </span>
       </div>
+      <br><br>
 
 
       <!-- Replacement subject -->
@@ -90,7 +90,7 @@
       <!-- Credits -->
       <div class="field">
         <label class="label">Subject Credits</label>
-        <input class="input" type="number" name="credits_ntnu" id="credits_ntnu"
+        <input class="input" type="number" name="ntnuCredits" id="ntnuCredits"
                placeholder="Credits (Converted to NTNU-credits)" ngModel required>
       </div>
 
@@ -99,7 +99,7 @@
       <div class="field">
         <label class="label">Subject Information (Optional)</label>
         <p class="control">
-          <textarea class="textarea" placeholder="Please provide us with information about the class"></textarea>
+          <textarea class="textarea" name="description" id="description" placeholder="Please provide us with information about the class" ngModel></textarea>
         </p>
       </div>
 
@@ -141,63 +141,3 @@
 
 
 <!-- DELETE EVERYTHING HERE AND DOWN -->
-
-<div class="heading">
-
-  <body>
-
-  <div class="panes-container">
-
-    <div class="left-pane" id="left-pane">
-      <br>
-      <a href="#">
-        <img src="\assets\img\logo.png" alt="Digiform." style="max-width: 100%;max-height: 100%;width:140px;"></a>
-      <br>
-      <br>
-      <a href="#">Home</a><br>
-      <a href="#subjects">Subjects</a><br>
-      <a href="#universities">Universities</a><br>
-      <a href="#chat">Chat</a><br>
-      <a href="#profile">My profile</a><br>
-      <a href="#help">Help</a>
-
-    </div>
-    <div class="right-pane" id="right-pane">
-
-      <br>
-      <h1>New subject</h1>
-
-      <form #f="ngForm" class="login-form" (ngSubmit)="createSubject(f)">
-
-        <!-- University -->
-        <select name="university" id="university" ngModel required>
-          <option value="" disabled selected>Velg et universitet</option>
-          <option value="{{uni.id}}" *ngFor="let uni of universities">{{uni.title}}</option>
-        </select>
-        <br><br>
-        <!-- Replacement subject -->
-
-        <input type="text" name="title" id="title" placeholder="Fagnavn" ngModel required>
-        <br><br>
-
-        <!--Course code -->
-        <input type="text" name="courseCode" id="courseCode" placeholder="Fagkode" ngModel required>
-
-        <!-- Credits (NTNU) -->
-        <input type="number" step=0.25 min=0 name="ntnuCredits" id="ntnuCredits" placeholder="Studiepoeng (NTNU)" ngModel required>
-        <br><br>
-
-        <textarea rows="7" cols="40" style="border: none; resize: none" name="description"
-                  id="description" placeholder="Subject Information (Optional)" ngModel></textarea>
-        <br><br>
-
-        <br><br>
-        <!-- Error -->
-        <p *ngFor="let e of createApplicationError?.non_field_errors">{{e}}</p>
-
-        <button type="submit">Add subject</button>
-      </form>
-    </div>
-  </div>
-  </body>
-</div>
