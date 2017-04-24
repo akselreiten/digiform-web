@@ -56,26 +56,54 @@
 <section class="section">
   <div class="container">
 
-    <article class="message">
-      <div class="message-header">
-        <p>Hello World</p>
-        <button class="delete"></button>
-      </div>
-      <div class="message-body">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
-      </div>
-    </article>
+    <table class="table is-striped is-pulled-left">
+      <colgroup>
+        <col span="1" style="width: 20%;">
+        <col span="1" style="width: 80%;">
+      </colgroup>
+      <thead>
+      <tr>
+        <th><abbr title="Sender">Sender</abbr></th>
+        <th><abbr title="Message">Message</abbr></th>
 
+      </tr>
+      </thead>
 
-    <article class="message is-primary">
-      <div class="message-header">
-        <p>Primary</p>
-        <button class="delete"></button>
-      </div>
-      <div class="message-body">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Pellentesque risus mi</strong>, tempus quis placerat ut, porta nec nulla. Vestibulum rhoncus ac ex sit amet fringilla. Nullam gravida purus diam, et dictum <a>felis venenatis</a> efficitur. Aenean ac <em>eleifend lacus</em>, in mollis lectus. Donec sodales, arcu et sollicitudin porttitor, tortor urna tempor ligula, id porttitor mi magna a neque. Donec dui urna, vehicula et sem eget, facilisis sodales sem.
-      </div>
-    </article>
+      <tbody>
+      <tr *ngFor="let msg of messages; let i=index">
+        <td>{{msg.sender?.first_name}}</td>
+        <td>{{msg.text}}</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <div class="box is-pulled-left" style="width: 90%" >
+      <article class="media">
+        <div class="media-content">
+          <div class="content">
+            <p>
+              <strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
+              <br>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+            </p>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="box is-pulled-right" style="width: 90%">
+      <article class="media">
+        <div class="media-content">
+          <div class="content">
+            <p>
+              <strong>Sjur Waagboe</strong> <small>@johnsmith</small> <small>31m</small>
+              <br>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+            </p>
+          </div>
+        </div>
+      </article>
+    </div>
 
 
 
@@ -83,7 +111,7 @@
 </section>
 
 
-<footer class="footer">
+<footer class="footer is-pulled-left">
   <div class="container">
     <div class="content has-text-centered">
       <p>
