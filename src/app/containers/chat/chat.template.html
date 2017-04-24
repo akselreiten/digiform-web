@@ -54,6 +54,29 @@
 
 
 <section class="section">
+
+  <div class="container">
+
+  <form #f="ngForm" class="login-form" (ngSubmit)="sendMessage(f)">
+
+    <div class="field">
+      <label class="label">Enter your message here</label>
+      <p class="control">
+        <textarea class="textarea" name="text" id="text" placeholder="Aa" ngModel required></textarea>
+      </p>
+    </div>
+
+    <p *ngFor="let e of sendMessageError?.non_field_errors">{{e}}</p>
+
+    <button class="button is-success" type="submit">Send</button>
+    <!--
+    <button class="button is-warning">Reset</button>
+    <button class="button is-danger">Quit</button>
+    -->
+  </form>
+
+  </div>
+
   <div class="container">
 
     <table class="table is-striped is-pulled-left">

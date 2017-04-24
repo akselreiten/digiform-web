@@ -15,7 +15,7 @@ import {ChatService} from "../../../lib/services/chat.service";
 })
 
 export class ChatComponent {
-
+  public sendMessageError: any;
   public messages:any[] = [];
 
   public test:string = 'Hey';
@@ -30,6 +30,16 @@ export class ChatComponent {
       .subscribe(messages => {
         this.messages = messages;
       }, error => {})
+  }
+
+  public sendMessage(fg:FormGroup) {
+    this._chatService.sendMessage(fg.value)
+
+      .subscribe(success => {
+        this._router.navigate(['chat'])
+      }, error => {
+        this.sendMessageError = error.json();
+      });
   }
 
   public login(fg:FormGroup) {

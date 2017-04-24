@@ -20,4 +20,10 @@ export class ChatService {
       .map(res => res.json());
   }
 
+  public sendMessage(data:any) {
+
+    let url:string = `${this._url}`;
+    return this._api.request('POST', url, null, data)
+  }
+
 }
