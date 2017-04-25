@@ -11,10 +11,11 @@ import {ReviewService} from "../../../lib/services/review.service";
 })
 
 
-export class ReviewsComponent {
+export class ReviewComponent {
 
   public universities:any[] = [];
   public reviews:any[] = [];
+  public reviewError:any;
 
   constructor(
     private _universityService: UniversityService,
