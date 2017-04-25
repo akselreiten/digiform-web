@@ -72,7 +72,7 @@
           <label class="label">University</label>
           <span class="select">
             <select name="university" id="university" ngModel>
-              <option value="" disabled selected>Choose exchange university</option>
+              <option value="">Any university</option>
               <option value="{{uni.id}}" *ngFor="let uni of universities">{{uni.title}}</option>
             </select>
           </span>
@@ -87,9 +87,8 @@
 
           <div class="column is-one-third is-gapless">
           <span class="select dropdown-fill">
-            <select style="width:100%" (change)="getSubjectByID($event,true)" name="ntnu_subject" id="ntnu_subject"
-                    ngModel
-                    required>
+            <select style="width:auto" (change)="getSubjectByID($event,true)" name="ntnu_subject" id="ntnu_subject"
+                    ngModel>
               <option value="" disabled selected>Choose a subject from NTNU</option>
               <option value="{{subject.id}}" *ngFor="let subject of NTNUsubjects">{{subject.courseCode}}</option>
             </select>
@@ -97,8 +96,25 @@
           </div>
 
           <div class="column">
-            <p align="left" > {{chosenNtnuSubject}}</p>
+            <p align="center" > {{chosenNtnuSubject}}</p>
           </div>
+
+        </div>
+
+        <label class="label">Approval Status</label>
+
+        <div class="field columns is-mobile">
+
+          <div class="column is-one-third is-gapless">
+          <span class="select dropdown-fill">
+            <select style="width:auto" name="approval_status" id="approval_status"
+                    ngModel>
+              <option value="" selected>Allow any approval status</option>
+              <option value="1">Allow only approved subjects</option>
+            </select>
+          </span>
+          </div>
+
 
         </div>
 
@@ -130,9 +146,6 @@
         </div>
 
       </form>
-
-      {{allApplications}}
-      hei!
     </div>
 
 

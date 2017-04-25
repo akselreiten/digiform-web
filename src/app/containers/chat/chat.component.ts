@@ -42,6 +42,14 @@ export class ChatComponent {
       });
   }
 
+  public updateMessages(){
+    console.log("ok!")
+    this._chatService.list()
+      .subscribe(messages => {
+        this.messages = messages;
+      }, error => {})
+  }
+
   public login(fg:FormGroup) {
     console.log(fg.value);
 
