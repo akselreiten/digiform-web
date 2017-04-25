@@ -12,7 +12,7 @@
 
 <nav class="nav has-shadow">
   <div class="container">
-    <div class="nav-left">
+    <div class="nav">
       <a class="nav-item" href="#">
         <img src="\assets\img\logo.png" alt="Digiform logo">
       </a>
@@ -20,6 +20,7 @@
       <a class="nav-item is-tab is-hidden-mobile" href="#subjects">Subjects</a>
       <a class="nav-item is-tab is-hidden-mobile" href="#universities">Universities</a>
       <a class="nav-item is-tab is-hidden-mobile" href="#chat">Chat</a>
+      <a class="nav-item is-tab is-hidden-mobile" href="#reviews">Reviews</a>
     </div>
     <span class="nav-toggle" id="nav-toggle">
       <span></span>
@@ -34,9 +35,7 @@
         Profile
       </a>
 
-      <form class="login-form" (ngSubmit)="logout()">
-        <button class="button is-info" type="submit">Log out</button>
-      </form>
+      <a class="nav-item is-tab" type="submit" (click)='logout()'>Log out</a>
 
     </div>
   </div>

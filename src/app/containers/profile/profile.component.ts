@@ -26,6 +26,7 @@ export class ProfileComponent {
   }
 
   public logout(){
+    console.log("dude");
     this._userService.logout()
       .subscribe(success => {
         this._router.navigate(['login'])

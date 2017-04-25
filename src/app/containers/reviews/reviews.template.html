@@ -12,14 +12,15 @@
 
 <nav class="nav has-shadow">
   <div class="container">
-    <div class="nav-left">
+    <div class="nav">
       <a class="nav-item" href="#">
         <img src="\assets\img\logo.png" alt="Digiform logo">
       </a>
       <a class="nav-item is-tab is-hidden-mobile" href="#">Home</a>
       <a class="nav-item is-tab is-hidden-mobile" href="#subjects">Subjects</a>
       <a class="nav-item is-tab is-hidden-mobile" href="#universities">Universities</a>
-      <a class="nav-item is-tab is-hidden-mobile is-active" href="#chat">Chat</a>
+      <a class="nav-item is-tab is-hidden-mobile" href="#chat">Chat</a>
+      <a class="nav-item is-tab is-hidden-mobile is-active" href="#reviews">Reviews</a>
     </div>
     <span class="nav-toggle" id="nav-toggle">
       <span></span>
@@ -33,7 +34,7 @@
         </figure>
         Profile
       </a>
-      <a class="nav-item is-tab">Log out</a>
+      <a class="nav-item is-tab" type="submit" (click)='logout()'>Log out</a>
     </div>
   </div>
 </nav>
@@ -43,10 +44,10 @@
   <div class="hero-body">
     <div class="container">
       <h1 class="title">
-        Chat
+        Reviews
       </h1>
       <h2 class="subsubtitle">
-        Chat with your supervisors. Better chats. Better travels.
+        See what other students think about the universities
       </h2>
     </div>
   </div>
@@ -57,23 +58,25 @@
 
   <div class="container">
 
-  <form #f="ngForm" class="login-form" (ngSubmit)="sendMessage(f)">
+    <form #f="ngForm" class="login-form" (ngSubmit)="sendMessage(f)">
 
-    <div class="field">
-      <label class="label">Enter your message here</label>
-      <p class="control">
-        <textarea class="textarea" name="text" id="text" placeholder="Aa" ngModel required></textarea>
-      </p>
-    </div>
+      <label class="label">Exchange university</label>
+      <div class="field columns is-mobile">
 
-    <p *ngFor="let e of sendMessageError?.non_field_errors">{{e}}</p>
-    <button class="button is-success" type="submit" onclick="window.location.reload()" >Send</button>
+        <div class="column is-one-third is-gapless ">
+          <span class="select dropdown-fill">
+              <select style="width:100%" (change)="getUniSubjects($event)" name="university" id="university" ngModel required>
+                <option value="" disabled selected>Choose exchange university</option>
+                <option value="{{uni.id}}" *ngFor="let uni of universities">{{uni.title}}</option>
+              </select>
+          </span>
+        </div>
 
-    <!--
-    <button class="button is-warning">Reset</button>
-    <button class="button is-danger">Quit</button>
-    -->
-  </form>
+      </div>
+
+      <p *ngFor="let e of sendMessageError?.non_field_errors">{{e}}</p>
+
+    </form>
 
   </div>
 
@@ -100,7 +103,7 @@
 </section>
 
 
-<footer class="footer is-pulled-left">
+<footer class="footer">
   <div class="container">
     <div class="content has-text-centered">
       <p>
