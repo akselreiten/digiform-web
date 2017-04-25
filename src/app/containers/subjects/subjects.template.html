@@ -19,6 +19,7 @@
       <a class="nav-item is-tab is-hidden-mobile is-active" href="#subjects">Subjects</a>
       <a class="nav-item is-tab is-hidden-mobile" href="#universities">Universities</a>
       <a class="nav-item is-tab is-hidden-mobile" href="#chat">Chat</a>
+      <a class="nav-item is-tab is-hidden-mobile" href="#reviews">Reviews</a>
     </div>
     <span class="nav-toggle" id="nav-toggle">
       <span></span>
@@ -32,7 +33,7 @@
         </figure>
         Profile
       </a>
-      <a class="nav-item is-tab">Log out</a>
+      <a class="nav-item is-tab" type="submit" (click)='logout()'>Log out</a>
     </div>
   </div>
 </nav>
@@ -45,7 +46,7 @@
         Subjects
       </h1>
       <h2 class="subsubtitle">
-        Search which subjects that have previously been approved by NTNU
+        Search for subjects within our databases
       </h2>
     </div>
 
@@ -54,13 +55,13 @@
 
 
 <section class="section">
-  <div class="container columns">
+  <div class="container columns search-section-left">
 
-    <div class="column search-section-left is-30%">
+    <div class="column ">
 
       <div class="heading">
         <h2 class="subtitle">
-          Search for existing subjects
+          Search
         </h2>
         <br>
       </div>
@@ -69,14 +70,13 @@
 
 
         <!--Course code -->
-
         <label class="label">NTNU Subject</label>
 
         <div class="field columns is-mobile">
 
-          <div class="column is-one-third is-gapless">
-          <span class="select dropdown-fill">
-            <select style="width:auto" (change)="getSubjectByID($event,true); getSubjects(f)" name="ntnu_subject" id="ntnu_subject"
+          <div class="column is-half is-gapless">
+          <span class="select">
+            <select style="width:100%" (change)="getSubjectByID($event,true); getSubjects(f)" name="ntnu_subject" id="ntnu_subject"
                     ngModel>
               <option value="" selected>Any NTNU subject</option>
               <option value="{{subject.id}}" *ngFor="let subject of NTNUsubjects">{{subject.courseCode}}</option>
@@ -93,7 +93,7 @@
         <div class="field search-input">
           <label class="label">University</label>
           <span class="select">
-            <select name="university" (change)="getSubjects(f)" id="university" ngModel>
+            <select style="width:100%" name="university" (change)="getSubjects(f)" id="university" ngModel>
               <option value="">Any university</option>
               <option value="{{uni.id}}" *ngFor="let uni of universities">{{uni.title}}</option>
             </select>
@@ -114,32 +114,10 @@
           </span>
           </div>
 
-
         </div>
-
-        <!--- might not need this ---
-
-          Approval status
-
-        <div class="field search-input">
-          <label class="label">Approval Status</label>
-          <p class="control center">
-                <span class="select">
-                  <select name="approval" id="approval" ngModel>
-                    <option value="" disabled selected>Status approval</option>
-                    <option value="STATUS_PROCESSING">Processing</option>
-                    <option value="STATUS_APPROVED">Approved</option>
-                    <option value="STATUS_DECLINED">Declined</option>
-                  </select>
-                </span>
-          </p>
-        </div>
-
-        -->
 
         <!-- Error -->
         <div class="field search-input">
-
           <p *ngFor="let e of subjectError?.non_field_errors">{{e}}</p>
           <button class="button is-primary" type="submit">Search</button>
         </div>
@@ -148,7 +126,8 @@
     </div>
 
 
-    <div class="column search-section-left is-70%">
+
+    <div class="column is-70%">
 
       <div class="heading">
         <h2 class="subtitle">
@@ -184,6 +163,7 @@
 
   </div>
 
+  <!--
   <div class="container">
     <div class="heading">
       <h2 class="subtitle">
@@ -196,11 +176,33 @@
       <button class="button is-warning" type="submit">Add a new subject</button>
     </form>
 
-
   </div>
+
+  -->
+
 </section>
 
 
+<section class="hero is-primary is-bold">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Add new subjects to the database
+      </h1>
+      <h2 class="subsubtitle">
+        If a subject does not exist in our databases, please feel free to add a subject
+      </h2>
+      <br>
+
+      <form class="login-form" (ngSubmit)="createSubjectNavigate()">
+        <button class="button is-primary" type="submit">Add a new subject</button>
+      </form>
+
+    </div>
+
+
+  </div>
+</section>
 
 
 <footer class="footer">
@@ -223,115 +225,3 @@
 
 </body>
 </html>
-
-
-
-<!-- DELETE THIS SECTION
-
-<div class="heading">
-
-  <body>
-
-  <div class="panes-container">
-
-    <div class="left-pane" id="left-pane">
-      <br>
-      <a href="#">
-        <img src="\assets\img\logo.png" alt="Digiform." style="max-width: 100%;max-height: 100%;width:140px;"></a>
-      <br>
-      <br>
-      <a href="#">Home</a><br>
-      <a href="#subjects"><b>Subjects</b></a><br>
-      <a href="#universities">Universities</a><br>
-      <a href="#chat">Chat</a><br>
-      <a href="#profile">My profile</a><br>
-      <a href="#help">Help</a>
-
-    </div>
-    <div class="right-pane" id="right-pane">
-      <br>
-      <h1>Subjects</h1>
-      <br>
-
-      <br><br><br>
-      <div class="inner-panes-container">
-        <div class="left-inner-pane">
-          <h3>Search Subjects</h3>
-
-          <form #f="ngForm" class="login-form" (ngSubmit)="pass">
-
-            <!-- University --
-            <select name="university" id="university" ngModel>
-              <option value="" disabled selected>Velg et universitet i utlandet</option>
-              <option value="{{uni.id}}" *ngFor="let uni of universities">{{uni.title}}</option>
-            </select>
-            <br><br>
-            <!-- Replacement subject --
-
-            <input type="text" name="title" id="title" placeholder="Fagnavn inneholder" ngModel>
-            <br><br>
-
-            <!--Course code --
-            <p class="control">
-              <input class="input" type="text" name="courseCode" id="courseCode" placeholder="Fagkode" ngModel>
-            </p>
-
-            <!--Approval status--
-            <p class="control center">
-              <span class="select">
-                <select name="approval" id="approval" ngModel>
-                  <option value="" disabled selected>Status godkjenning</option>
-                  <option value="STATUS_PROCESSING">Under behandling</option>
-                  <option value="STATUS_APPROVED">Godkjent</option>
-                  <option value="STATUS_DECLINED">Ikke godkjent</option>
-                </select>
-              </span>
-            </p>
-
-
-            <!-- Error --
-            <p *ngFor="let e of subjectError?.non_field_errors">{{e}}</p>
-            <br><br>
-            <button class="button is-primary" type="submit">Search</button>
-
-          </form>
-          <br><br>
-          <form class="login-form" (ngSubmit)="createSubjectNavigate()">
-            <button type="submit">Add a new subject</button>
-          </form>
-
-        </div>
-
-        <div class="panes-separator" id="panes-separator"></div>
-
-        <div class="right-inner-pane">
-          <h3>Results</h3>
-          <p><i>
-            Dette er inntil videre litt hardkodet. Klarer enda ikke sende infoen fra skjemaet til høyre inn som et
-            query.
-          </i></p>
-          <br>
-
-          <table align="center">
-
-            <tr>
-              <th align="left">Subject name</th>
-              <th align="left">University</th>
-              <th align="left">Course code</th>
-            </tr>
-            <tr *ngFor="let subject of subjects; let i=index">
-
-              <td align="left">{{subject.title}}</td>
-              <td align="left">{{subject.university.title}}</td>
-              <td align="left">{{subject.courseCode}}</td>
-
-            </tr>
-          </table>
-
-        </div>
-      </div>
-
-    </div>
-  </div>
-  </body>
-</div>-->

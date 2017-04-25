@@ -27,8 +27,10 @@ export class UserService {
   }
 
   public logout(){
-
-    return this._api.request('GET', `${this._url}logout/`)
+    let data: any = {
+      action: "logout",
+    };
+    return this._api.request('POST', `${this._url}logout/`,null,data)
 
   }
 

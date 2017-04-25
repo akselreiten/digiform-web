@@ -44,6 +44,12 @@ export class UniversityComponent {
   public login(fg:FormGroup) {
     console.log(fg.value);
 
+  }
+
+  public logout(){
+    console.log("dude");
+    this._router.navigate(['login']);
+    localStorage.removeItem("id_token");
 
   }
 }

@@ -50,6 +50,7 @@ import {
   ApplicationService,
 } from '../lib/services';
 import {ChatService} from "../lib/services/chat.service";
+
 import {ReviewComponent} from "./containers/reviews/reviews.component";
 import {ReviewService} from "../lib/services/review.service";
 import {CreateReviewComponent} from "./containers/createreview/createreview.component";
