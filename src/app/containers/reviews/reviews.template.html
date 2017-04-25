@@ -48,7 +48,10 @@
       </h1>
       <h2 class="subsubtitle">
         See what other students think about the universities
-      </h2>
+      </h2><br>
+      <form class="login-form" (ngSubmit)="createReviewNavigate()">
+          <button class="button is-warning" type="submit">Add a new review</button>
+        </form>
     </div>
   </div>
 </section>
@@ -92,13 +95,13 @@
                   <strong>{{r.user?.first_name}} {{r.user?.last_name}}</strong>
                   University {{r.university.title}}
                   <br>
-                  <small>Lectures rating: {{r.lectures_rating}}</small>
-                  <small>Assigments rating: {{r.assignments_rating}}</small>
-                  <small>Difficulty rating: {{r.difficulty_rating}}</small>
-                  <small>Social rating: {{r.social_rating}}</small>
-                  <small>Availability rating: {{r.course_availability_rating}}</small>
-                  <small>Price rating: {{r.price_rating}}</small>
-                  <br>
+                  <small>Lectures rating: <strong>{{r.lectures_rating}}</strong></small>
+                  <small>Assigments rating: <strong>{{r.assignments_rating}}</strong></small>
+                  <small>Difficulty rating: <strong>{{r.difficulty_rating}}</strong></small>
+                  <small>Social rating: <strong>{{r.social_rating}}</strong></small>
+                  <small>Availability rating: <strong>{{r.course_availability_rating}}</strong></small>
+                  <small>Price rating: <strong>{{r.price_rating}}</strong></small>
+                  <br><br>
                   Description: <i>{{r.description}}</i>
 
                   <br>

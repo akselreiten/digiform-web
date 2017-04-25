@@ -53,6 +53,7 @@ import {ChatService} from "../lib/services/chat.service";
 
 import {ReviewComponent} from "./containers/reviews/reviews.component";
 import {ReviewService} from "../lib/services/review.service";
+import {CreateReviewComponent} from "./containers/createreview/createreview.component";
 
 
 function authHttpServiceFactory(http: Http, options: RequestOptions) {
@@ -91,7 +92,8 @@ type StoreType = {
     ProfileComponent,
     ChatComponent,
     CreateSubjectComponent,
-    ReviewComponent
+    ReviewComponent,
+    CreateReviewComponent
   ],
   imports: [ // import Angular  's modules
     BrowserModule,

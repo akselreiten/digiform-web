@@ -9,3 +9,4 @@ export * from './profile/profile.component';
 export * from './chat/chat.component'
 export * from './createsubject/createsubject.component';
 export * from './reviews/reviews.component';
+export * from './createreview/createreview.component';

@@ -39,10 +39,16 @@ export class ReviewComponent {
       }, error => {});
   }
 
+
+  public createReviewNavigate() {
+    this._router.navigate(['createreview']);
+  }
+  
   public logout(){
     console.log("dude");
     this._router.navigate(['login']);
     localStorage.removeItem("id_token");
+
 
   }
 }

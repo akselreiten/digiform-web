@@ -8,6 +8,7 @@ import { NoContentComponent } from './no-content';
 import {AuthGuard} from '../lib/services';
 import {CreateSubjectComponent} from "./containers/createsubject/createsubject.component";
 import {ReviewComponent} from "./containers/reviews/reviews.component";
+import {CreateReviewComponent} from "./containers/createreview/createreview.component";
 
 export const ROUTES: Routes = [
   { path: '',      component: HomeComponent, canActivate: [AuthGuard] },
@@ -21,6 +22,7 @@ export const ROUTES: Routes = [
   { path: 'chat', component:ChatComponent},
   { path: 'createsubject', component:CreateSubjectComponent},
   { path: 'reviews', component:ReviewComponent},
+  { path: 'createreview', component:CreateReviewComponent},
   { path: '**',    component: NoContentComponent },
 
 ];
