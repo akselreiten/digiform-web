@@ -51,6 +51,7 @@ import {
 } from '../lib/services';
 import {ChatService} from "../lib/services/chat.service";
 import {ReviewsComponent} from "./containers/reviews/reviews.component";
+import {ReviewService} from "../lib/services/review.service";
 
 
 function authHttpServiceFactory(http: Http, options: RequestOptions) {
@@ -108,6 +109,7 @@ type StoreType = {
     UniversityService,
     ApplicationService,
     ChatService,
+    ReviewService,
 
 
     {

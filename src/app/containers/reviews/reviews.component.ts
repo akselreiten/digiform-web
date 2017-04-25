@@ -37,4 +37,11 @@ export class ReviewsComponent {
         this.reviews = success;
       }, error => {});
   }
+
+  public logout(){
+    console.log("dude");
+    this._router.navigate(['login']);
+    localStorage.removeItem("id_token");
+
+  }
 }
