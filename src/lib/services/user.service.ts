@@ -30,7 +30,7 @@ export class UserService {
 
     return this._api.request('GET', `${this._url}logout/`)
 
-    
+
   }
 
   public createUser(username: string, password: string, email: string, first_name: string, last_name: string) {
