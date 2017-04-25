@@ -93,7 +93,7 @@ export class SubjectComponent {
 
   public getSubjects(fg: FormGroup) {
 
-    this._applicationService.getApplications(fg.value.university, fg.value.ntnu_subject)
+    this._applicationService.getApplications(fg.value.university, fg.value.ntnu_subject, fg.value.approval_status)
 
       .subscribe(success => {
         this.allApplications = success;
