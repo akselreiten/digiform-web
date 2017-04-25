@@ -24,6 +24,7 @@ export class SubjectComponent {
   public chosenNtnuSubject:any;
   public chosenForeignSubject:any;
   public replacementPlaceholderString:string;
+  public allApplications:any[] = [];
 
   constructor(private _applicationService: ApplicationService,
               private _universityService: UniversityService,
@@ -89,6 +90,18 @@ export class SubjectComponent {
         this.subjectError = error.json();
       });
   }
+
+  public getSubjects(fg: FormGroup) {
+
+    this._applicationService.getApplications(fg.value.university, fg.value.ntnu_subject)
+
+      .subscribe(success => {
+        this.allApplications = success;
+      }, error => {
+        this.subjectError = error.json();
+      });
+  }
+
 
   public createSubjectNavigate(){
     this._router.navigate(['createsubject']);

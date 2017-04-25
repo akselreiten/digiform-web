@@ -65,7 +65,7 @@
         <br>
       </div>
 
-      <form #f="ngForm" class="login-form" (ngSubmit)="pass">
+      <form #f="ngForm" class="login-form" (ngSubmit)="getSubjects(f)">
 
         <!-- University -->
         <div class="field search-input">
@@ -124,13 +124,15 @@
 
         <!-- Error -->
         <div class="field search-input">
+
           <p *ngFor="let e of subjectError?.non_field_errors">{{e}}</p>
           <button class="button is-primary" type="submit">Search</button>
         </div>
 
       </form>
 
-
+      {{allApplications}}
+      hei!
     </div>
 
 
@@ -149,14 +151,17 @@
           <th align="left">Subject name</th>
           <th align="left">University</th>
           <th align="left">Course code</th>
+          <th align="left">Approval status</th>
         </tr>
         </thead>
 
         <tbody>
-        <tr *ngFor="let subject of subjects; let i=index">
-          <td align="left">{{subject.title}}</td>
-          <td align="left">{{subject.university.title}}</td>
-          <td align="left">{{subject.courseCode}}</td>
+        <tr *ngFor="let app of allApplications; let i=index">
+          <td align="left">{{app.replacing_subject.title}}</td>
+          <td align="left">{{app.replacing_subject.university.title}}</td>
+          <td align="left">{{app.replacing_subject.courseCode}}</td>
+          <td align="left">{{app.application_status}}</td>
+
         </tr>
         </tbody>
       </table>
@@ -207,7 +212,7 @@
 
 
 
-<!-- DELETE THIS SECTION -->
+<!-- DELETE THIS SECTION
 
 <div class="heading">
 
@@ -241,23 +246,23 @@
 
           <form #f="ngForm" class="login-form" (ngSubmit)="pass">
 
-            <!-- University -->
+            <!-- University --
             <select name="university" id="university" ngModel>
               <option value="" disabled selected>Velg et universitet i utlandet</option>
               <option value="{{uni.id}}" *ngFor="let uni of universities">{{uni.title}}</option>
             </select>
             <br><br>
-            <!-- Replacement subject -->
+            <!-- Replacement subject --
 
             <input type="text" name="title" id="title" placeholder="Fagnavn inneholder" ngModel>
             <br><br>
 
-            <!--Course code -->
+            <!--Course code --
             <p class="control">
               <input class="input" type="text" name="courseCode" id="courseCode" placeholder="Fagkode" ngModel>
             </p>
 
-            <!--Approval status-->
+            <!--Approval status--
             <p class="control center">
               <span class="select">
                 <select name="approval" id="approval" ngModel>
@@ -270,7 +275,7 @@
             </p>
 
 
-            <!-- Error -->
+            <!-- Error --
             <p *ngFor="let e of subjectError?.non_field_errors">{{e}}</p>
             <br><br>
             <button class="button is-primary" type="submit">Search</button>
@@ -315,4 +320,4 @@
     </div>
   </div>
   </body>
-</div>
+</div>-->

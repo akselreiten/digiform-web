@@ -24,4 +24,12 @@ export class ApplicationService{
     return this._api.request('GET', this._url)
       .map(res => res.json());
   }
+
+  public getApplications(uni:any, subject:any) {
+
+    return this._api.request('GET',this._url + "getAllApplications/?q=" + uni + "&v=" + subject)
+      .map(res => res.json());
+  }
+
+
 }
