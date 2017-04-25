@@ -36,7 +36,9 @@ import {
   HelpComponent,
   ProfileComponent,
   ChatComponent,
-  CreateSubjectComponent
+  CreateSubjectComponent,
+  ReviewComponent,
+  CreateReviewComponent
 } from './containers';
 
 import { NoContentComponent } from './no-content';
@@ -48,13 +50,9 @@ import {
   AuthGuard,
   UniversityService,
   ApplicationService,
+  ChatService,
+  ReviewService,
 } from '../lib/services';
-import {ChatService} from "../lib/services/chat.service";
-
-import {ReviewComponent} from "./containers/reviews/reviews.component";
-import {ReviewService} from "../lib/services/review.service";
-import {CreateReviewComponent} from "./containers/createreview/createreview.component";
-
 
 function authHttpServiceFactory(http: Http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig({
@@ -112,8 +110,6 @@ type StoreType = {
     ApplicationService,
     ChatService,
     ReviewService,
-
-
     {
       provide: AuthHttp,
       useFactory: authHttpServiceFactory,

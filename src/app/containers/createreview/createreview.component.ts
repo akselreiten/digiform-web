@@ -2,9 +2,6 @@ import {Component} from '@angular/core';
 import {FormGroup} from "@angular/forms";
 import {Router} from "@angular/router";
 
-import {
-  ApplicationService
-} from '../../../lib/services'
 import {UniversityService} from "../../../lib/services/university.service";
 import {ReviewService} from "../../../lib/services/review.service";
 
@@ -16,9 +13,8 @@ import {ReviewService} from "../../../lib/services/review.service";
 
 export class CreateReviewComponent {
 
-  public createSubjectError: any;
+  public createReviewError:any;
   public universities:any[] = [];
-  public subjects:any[] = [];
 
   constructor(private _reviewService: ReviewService,
               private _universityService: UniversityService,
@@ -37,9 +33,9 @@ export class CreateReviewComponent {
     this._reviewService.createReview(fg.value)
 
       .subscribe(success => {
-        this._router.navigate(['subjects'])
+        this._router.navigate(['reviews'])
       }, error => {
-        this.createSubjectError = error.json();
+        this.createReviewError = error.json();
       });
   }
 }

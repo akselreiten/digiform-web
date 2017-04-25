@@ -45,10 +45,10 @@
   <div class="hero-body">
     <div class="container">
       <h1 class="title">
-        Add New Subjects
+        Add New Review
       </h1>
       <h2 class="subsubtitle">
-        Add a new subject to NTNUs database
+        Add a new review of a university
       </h2>
     </div>
 
@@ -61,16 +61,16 @@
 
     <form #f="ngForm" class="login-form" (ngSubmit)="createReview(f)">
 
-
-      <small>Lectures rating: <strong>{{r.lectures_rating}}</strong></small>
-      <small>Assigments rating: <strong>{{r.assignments_rating}}</strong></small>
-      <small>Difficulty rating: <strong>{{r.difficulty_rating}}</strong></small>
-      <small>Social rating: <strong>{{r.social_rating}}</strong></small>
-      <small>Availability rating: <strong>{{r.course_availability_rating}}</strong></small>
-      <small>Price rating: <strong>{{r.price_rating}}</strong></small>
-      <br><br>
-      Description: <i>{{r.description}}</i>
-
+      <!-- University -->
+      <div class="field search-input">
+        <label class="label">University</label>
+        <span class="select">
+            <select style="width:100%" name="university" id="university" ngModel required>
+              <option value="" selected disabled>Any university</option>
+              <option value="{{uni.id}}" *ngFor="let uni of universities">{{uni.title}}</option>
+            </select>
+          </span>
+      </div>
 
       <div class="field">
         <label class="label">Lectures rating</label>
@@ -79,66 +79,39 @@
       </div>
 
       <div class="field">
-        <label class="label">Subject Credits</label>
-        <input class="input" type="number" step="1" max="5" min="1" name="lectures_rating" id="lectures_rating"
-               placeholder="Please rate the lectures" ngModel required>
+        <label class="label">Assigments rating</label>
+        <input class="input" type="number" step="1" max="5" min="1" name="assignments_rating" id="assignments_rating"
+               placeholder="Please rate the assignments" ngModel required>
       </div>
 
       <div class="field">
-        <label class="label">Subject Credits</label>
-        <input class="input" type="number" step="1" max="5" min="1" name="lectures_rating" id="lectures_rating"
-               placeholder="Please rate the lectures" ngModel required>
+        <label class="label">Difficulty rating</label>
+        <input class="input" type="number" step="1" max="5" min="1" name="difficulty_rating" id="difficulty_rating"
+               placeholder="Please rate the difficulty of the subjects" ngModel required>
       </div>
 
       <div class="field">
-        <label class="label">Subject Credits</label>
-        <input class="input" type="number" step="1" max="5" min="1" name="lectures_rating" id="lectures_rating"
-               placeholder="Please rate the lectures" ngModel required>
+        <label class="label">Social rating</label>
+        <input class="input" type="number" step="1" max="5" min="1" name="social_rating" id="social_rating"
+               placeholder="Please rate your social experience" ngModel required>
       </div>
 
       <div class="field">
-        <label class="label">Subject Credits</label>
-        <input class="input" type="number" step="1" max="5" min="1" name="lectures_rating" id="lectures_rating"
-               placeholder="Please rate the lectures" ngModel required>
+        <label class="label">Availability rating</label>
+        <input class="input" type="number" step="1" max="5" min="1" name="course_availability_rating" id="course_availability_rating"
+               placeholder="Please rate the course availability" ngModel required>
       </div>
 
       <div class="field">
-        <label class="label">Subject Credits</label>
-        <input class="input" type="number" step="1" max="5" min="1" name="lectures_rating" id="lectures_rating"
-               placeholder="Please rate the lectures" ngModel required>
+        <label class="label">Price rating</label>
+        <input class="input" type="number" step="1" max="5" min="1" name="price_rating" id="price_rating"
+               placeholder="Please rate the price level" ngModel required>
       </div>
 
 
-
-
-      <!-- Replacement subject -->
       <div class="field">
-        <label class="label">Exchange university subject</label>
-        <input class="input" type="text" name="title" id="title" placeholder="Fagnavn" ngModel required>
-      </div>
-
-
-      <!--Course code -->
-      <div class="field">
-        <label class="label">Course code</label>
-        <input class="input" type="text" name="courseCode" id="courseCode" placeholder="Fagkode" ngModel required>
-      </div>
-
-
-      <!-- Credits -->
-      <div class="field">
-        <label class="label">Subject Credits</label>
-        <input class="input" type="number" step="0.5" name="ntnuCredits" id="ntnuCredits"
-               placeholder="Credits (Converted to NTNU-credits)" ngModel required>
-      </div>
-
-
-      <!-- Subject information-->
-      <div class="field">
-        <label class="label">Subject Information (Optional)</label>
-        <p class="control">
-          <textarea class="textarea" name="description" id="description" placeholder="Please provide us with information about the class" ngModel></textarea>
-        </p>
+        <label class="label">Description</label>
+        <textarea class="textarea" name="justification" id="justification" placeholder="Please describe your stay" ngModel required></textarea>
       </div>
 
 
@@ -146,7 +119,8 @@
       <p *ngFor="let e of createApplicationError?.non_field_errors">{{e}}</p>
 
       <button class="button is-success" type="submit">Create</button>
-      <a class="button is-warning" type="button" href="#subjects">Cancel</a>
+
+      <a class="button is-warning" type="button" href="#reviews">Cancel</a>
 
     </form>
 

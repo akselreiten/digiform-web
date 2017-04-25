@@ -43,7 +43,8 @@ export class ReviewComponent {
   public createReviewNavigate() {
     this._router.navigate(['createreview']);
   }
-  
+
+
   public logout(){
     console.log("dude");
     this._router.navigate(['login']);

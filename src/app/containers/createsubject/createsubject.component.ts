@@ -2,9 +2,6 @@ import {Component} from '@angular/core';
 import {FormGroup} from "@angular/forms";
 import {Router} from "@angular/router";
 
-import {
-  ApplicationService
-} from '../../../lib/services'
 import {UniversityService} from "../../../lib/services/university.service";
 import {SubjectService} from "../../../lib/services/subject.service";
 

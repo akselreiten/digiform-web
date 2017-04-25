@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {FormGroup} from "@angular/forms";
+import {Router} from "@angular/router";
 
 import {UniversityService} from "../../../lib/services/university.service";
 
@@ -19,7 +20,9 @@ export class UniversityComponent {
   public test:string = 'Hey';
 
   constructor(
-    private _universityService:UniversityService
+    private _universityService:UniversityService,
+    private _router: Router
+
 
 
 ) {

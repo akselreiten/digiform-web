@@ -5,3 +5,4 @@ export * from './api.service';
 export * from './authguard.service';
 export * from './application.service';
 export * from './chat.service';
+export * from './review.service';
