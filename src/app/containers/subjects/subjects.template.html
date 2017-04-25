@@ -71,7 +71,7 @@
         <div class="field search-input">
           <label class="label">University</label>
           <span class="select">
-            <select name="university" id="university" ngModel>
+            <select name="university" (change)="getSubjects(f)" id="university" ngModel>
               <option value="">Any university</option>
               <option value="{{uni.id}}" *ngFor="let uni of universities">{{uni.title}}</option>
             </select>
@@ -87,7 +87,7 @@
 
           <div class="column is-one-third is-gapless">
           <span class="select dropdown-fill">
-            <select style="width:auto" (change)="getSubjectByID($event,true)" name="ntnu_subject" id="ntnu_subject"
+            <select style="width:auto" (change)="getSubjectByID($event,true); getSubjects(f)" name="ntnu_subject" id="ntnu_subject"
                     ngModel>
               <option value="" disabled selected>Choose a subject from NTNU</option>
               <option value="{{subject.id}}" *ngFor="let subject of NTNUsubjects">{{subject.courseCode}}</option>
@@ -107,7 +107,7 @@
 
           <div class="column is-one-third is-gapless">
           <span class="select dropdown-fill">
-            <select style="width:auto" name="approval_status" id="approval_status"
+            <select style="width:auto" (change)="getSubjects(f)" name="approval_status" id="approval_status"
                     ngModel>
               <option value="" selected>Allow any approval status</option>
               <option value="1">Allow only approved subjects</option>

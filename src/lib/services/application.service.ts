@@ -27,7 +27,7 @@ export class ApplicationService{
 
   public getApplications(uni:any, subject:any, approval_status:any) {
 
-    return this._api.request('GET',this._url + "getAllApplications/?uni=" + uni + "&subject=" + subject + "&approval=" approval_status)
+    return this._api.request('GET',this._url + "getApplications/?uni=" + uni + "&subject=" + subject + "&approval=" + approval_status)
       .map(res => res.json());
   }
 
