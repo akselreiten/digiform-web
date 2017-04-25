@@ -38,4 +38,8 @@ export class ReviewComponent {
         this.reviews = success;
       }, error => {});
   }
+
+  public createReviewNavigate(){
+    this._router.navigate(['createreview']);
+  }
 }
