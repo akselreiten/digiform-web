@@ -13,7 +13,7 @@
 <nav class="nav has-shadow">
   <div class="container">
     <div class="nav-left">
-      <a class="nav-item">
+      <a class="nav-item" href="#">
         <img src="\assets\img\logo.png" alt="Digiform logo">
       </a>
       <a class="nav-item is-tab is-hidden-mobile" href="#">Home</a>
@@ -108,8 +108,7 @@
       <p *ngFor="let e of createApplicationError?.non_field_errors">{{e}}</p>
 
       <button class="button is-success" type="submit">Create</button>
-      <button class="button is-warning">Reset</button>
-      <button class="button is-danger">Quit</button>
+      <a class="button is-warning" type="button" href="#subjects">Cancel</a>
 
     </form>
 

@@ -12,7 +12,7 @@
 <nav class="nav has-shadow">
   <div class="container">
     <div class="nav-left">
-      <a class="nav-item">
+      <a class="nav-item" href="#">
         <img src="\assets\img\logo.png" alt="Digiform logo">
       </a>
       <a class="nav-item is-tab is-hidden-mobile" href="#">Home</a>
@@ -65,7 +65,7 @@
         <br>
       </div>
 
-      <form #f="ngForm" class="login-form" (ngSubmit)="pass">
+      <form #f="ngForm" class="login-form" (ngSubmit)="getSubjects(f)">
 
         <!-- University -->
         <div class="field search-input">
@@ -79,23 +79,33 @@
         </div>
 
 
-        <!-- Replacement subject -->
-        <div class="field search-input">
-          <label class="label">Replacement Subject</label>
-          <input class="input" type="text" name="title" id="title" placeholder="Replacement Subject" ngModel>
-        </div>
-
-
         <!--Course code -->
-        <div class="field search-input">
-          <label class="label">Course Code</label>
-          <p class="control">
-            <input class="input" type="text" name="courseCode" id="courseCode" placeholder="Course code" ngModel>
-          </p>
+
+        <label class="label">NTNU Subject</label>
+
+        <div class="field columns is-mobile">
+
+          <div class="column is-one-third is-gapless">
+          <span class="select dropdown-fill">
+            <select style="width:100%" (change)="getSubjectByID($event,true)" name="ntnu_subject" id="ntnu_subject"
+                    ngModel
+                    required>
+              <option value="" disabled selected>Choose a subject from NTNU</option>
+              <option value="{{subject.id}}" *ngFor="let subject of NTNUsubjects">{{subject.courseCode}}</option>
+            </select>
+          </span>
+          </div>
+
+          <div class="column">
+            <p align="left" > {{chosenNtnuSubject}}</p>
+          </div>
+
         </div>
 
+        <!--- might not need this ---
 
-        <!--Approval status-->
+          Approval status
+
         <div class="field search-input">
           <label class="label">Approval Status</label>
           <p class="control center">
@@ -110,16 +120,19 @@
           </p>
         </div>
 
+        -->
 
         <!-- Error -->
         <div class="field search-input">
+
           <p *ngFor="let e of subjectError?.non_field_errors">{{e}}</p>
           <button class="button is-primary" type="submit">Search</button>
         </div>
 
       </form>
 
-
+      {{allApplications}}
+      hei!
     </div>
 
 
@@ -138,14 +151,17 @@
           <th align="left">Subject name</th>
           <th align="left">University</th>
           <th align="left">Course code</th>
+          <th align="left">Approval status</th>
         </tr>
         </thead>
 
         <tbody>
-        <tr *ngFor="let subject of subjects; let i=index">
-          <td align="left">{{subject.title}}</td>
-          <td align="left">{{subject.university.title}}</td>
-          <td align="left">{{subject.courseCode}}</td>
+        <tr *ngFor="let app of allApplications; let i=index">
+          <td align="left">{{app.replacing_subject.title}}</td>
+          <td align="left">{{app.replacing_subject.university.title}}</td>
+          <td align="left">{{app.replacing_subject.courseCode}}</td>
+          <td align="left">{{app.application_status}}</td>
+
         </tr>
         </tbody>
       </table>
@@ -196,7 +212,7 @@
 
 
 
-<!-- DELETE THIS SECTION -->
+<!-- DELETE THIS SECTION
 
 <div class="heading">
 
@@ -230,23 +246,23 @@
 
           <form #f="ngForm" class="login-form" (ngSubmit)="pass">
 
-            <!-- University -->
+            <!-- University --
             <select name="university" id="university" ngModel>
               <option value="" disabled selected>Velg et universitet i utlandet</option>
               <option value="{{uni.id}}" *ngFor="let uni of universities">{{uni.title}}</option>
             </select>
             <br><br>
-            <!-- Replacement subject -->
+            <!-- Replacement subject --
 
             <input type="text" name="title" id="title" placeholder="Fagnavn inneholder" ngModel>
             <br><br>
 
-            <!--Course code -->
+            <!--Course code --
             <p class="control">
               <input class="input" type="text" name="courseCode" id="courseCode" placeholder="Fagkode" ngModel>
             </p>
 
-            <!--Approval status-->
+            <!--Approval status--
             <p class="control center">
               <span class="select">
                 <select name="approval" id="approval" ngModel>
@@ -259,7 +275,7 @@
             </p>
 
 
-            <!-- Error -->
+            <!-- Error --
             <p *ngFor="let e of subjectError?.non_field_errors">{{e}}</p>
             <br><br>
             <button class="button is-primary" type="submit">Search</button>
@@ -304,4 +320,4 @@
     </div>
   </div>
   </body>
-</div>
+</div>-->

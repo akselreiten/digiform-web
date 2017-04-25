@@ -21,7 +21,10 @@ export class SubjectComponent {
   public universities:any[] = [];
   public subjects:any[] = [];
   public NTNUsubjects:any[] = [];
+  public chosenNtnuSubject:any;
+  public chosenForeignSubject:any;
   public replacementPlaceholderString:string;
+  public allApplications:any[] = [];
 
   constructor(private _applicationService: ApplicationService,
               private _universityService: UniversityService,
@@ -44,6 +47,20 @@ export class SubjectComponent {
       }, error => {});
 
     this.replacementPlaceholderString = "Velg først universitet";
+  }
+
+  public getSubjectByID(event,bool){
+
+    let id = event.target.value;
+
+    this._subjectService.getSubject(id)
+      .subscribe(subject => {
+        if(bool){
+          this.chosenNtnuSubject = subject[0].title;
+        } else {
+          this.chosenForeignSubject = subject[0].title;
+        }
+      }, error => {});
   }
 
   public getUniSubjects(event){
@@ -73,6 +90,18 @@ export class SubjectComponent {
         this.subjectError = error.json();
       });
   }
+
+  public getSubjects(fg: FormGroup) {
+
+    this._applicationService.getApplications(fg.value.university, fg.value.ntnu_subject)
+
+      .subscribe(success => {
+        this.allApplications = success;
+      }, error => {
+        this.subjectError = error.json();
+      });
+  }
+
 
   public createSubjectNavigate(){
     this._router.navigate(['createsubject']);
