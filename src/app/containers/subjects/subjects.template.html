@@ -56,7 +56,7 @@
 <section class="section">
   <div class="container columns">
 
-    <div class="column search-section-left is-half">
+    <div class="column search-section-left is-30%">
 
       <div class="heading">
         <h2 class="subtitle">
@@ -66,17 +66,6 @@
       </div>
 
       <form #f="ngForm" class="login-form" (ngSubmit)="getSubjects(f)">
-
-        <!-- University -->
-        <div class="field search-input">
-          <label class="label">University</label>
-          <span class="select">
-            <select name="university" (change)="getSubjects(f)" id="university" ngModel>
-              <option value="">Any university</option>
-              <option value="{{uni.id}}" *ngFor="let uni of universities">{{uni.title}}</option>
-            </select>
-          </span>
-        </div>
 
 
         <!--Course code -->
@@ -89,7 +78,7 @@
           <span class="select dropdown-fill">
             <select style="width:auto" (change)="getSubjectByID($event,true); getSubjects(f)" name="ntnu_subject" id="ntnu_subject"
                     ngModel>
-              <option value="" disabled selected>Choose a subject from NTNU</option>
+              <option value="" selected>Any NTNU subject</option>
               <option value="{{subject.id}}" *ngFor="let subject of NTNUsubjects">{{subject.courseCode}}</option>
             </select>
           </span>
@@ -98,7 +87,17 @@
           <div class="column">
             <p align="center" > {{chosenNtnuSubject}}</p>
           </div>
+        </div>
 
+        <!-- University -->
+        <div class="field search-input">
+          <label class="label">University</label>
+          <span class="select">
+            <select name="university" (change)="getSubjects(f)" id="university" ngModel>
+              <option value="">Any university</option>
+              <option value="{{uni.id}}" *ngFor="let uni of universities">{{uni.title}}</option>
+            </select>
+          </span>
         </div>
 
         <label class="label">Approval Status</label>
@@ -149,7 +148,7 @@
     </div>
 
 
-    <div class="column search-section-left is-half">
+    <div class="column search-section-left is-70%">
 
       <div class="heading">
         <h2 class="subtitle">
@@ -161,7 +160,8 @@
       <table class="table is-striped">
         <thead>
         <tr>
-          <th align="left">Subject name</th>
+          <th align="left">NTNU subject</th>
+          <th align="left">Replacing subject</th>
           <th align="left">University</th>
           <th align="left">Course code</th>
           <th align="left">Approval status</th>
@@ -170,6 +170,7 @@
 
         <tbody>
         <tr *ngFor="let app of allApplications; let i=index">
+          <td align="left">{{app.ntnu_subject.title}}</td>
           <td align="left">{{app.replacing_subject.title}}</td>
           <td align="left">{{app.replacing_subject.university.title}}</td>
           <td align="left">{{app.replacing_subject.courseCode}}</td>
