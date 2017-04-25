@@ -11,10 +11,11 @@ import {ReviewService} from "../../../lib/services/review.service";
 })
 
 
-export class ReviewsComponent {
+export class ReviewComponent {
 
   public universities:any[] = [];
   public reviews:any[] = [];
+  public reviewError:any;
 
   constructor(
     private _universityService: UniversityService,
@@ -36,5 +37,12 @@ export class ReviewsComponent {
       .subscribe(success => {
         this.reviews = success;
       }, error => {});
+  }
+
+  public logout(){
+    console.log("dude");
+    this._router.navigate(['login']);
+    localStorage.removeItem("id_token");
+
   }
 }

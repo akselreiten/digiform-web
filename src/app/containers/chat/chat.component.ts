@@ -58,4 +58,11 @@ export class ChatComponent {
   public createApplicationNavigate(){
     this._router.navigate(['createapplication']);
   }
+
+  public logout(){
+    console.log("dude");
+    this._router.navigate(['login']);
+    localStorage.removeItem("id_token");
+
+  }
 }

@@ -106,4 +106,11 @@ export class SubjectComponent {
   public createSubjectNavigate(){
     this._router.navigate(['createsubject']);
   }
+
+  public logout(){
+    console.log("dude");
+    this._router.navigate(['login']);
+    localStorage.removeItem("id_token");
+
+  }
 }
