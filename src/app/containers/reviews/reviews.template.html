@@ -56,16 +56,18 @@
 
 <section class="section">
 
-  <div class="container">
+  <div class="container columns">
 
-    <form #f="ngForm" class="login-form" (ngSubmit)="sendMessage(f)">
+    <div class="column search-section-left is-30%">
+
+    <form #f="ngForm" class="login-form" (ngSubmit)="getUniversityReviews(f)">
 
       <label class="label">Exchange university</label>
       <div class="field columns is-mobile">
 
         <div class="column is-one-third is-gapless ">
           <span class="select dropdown-fill">
-              <select style="width:100%" (change)="getUniSubjects($event)" name="university" id="university" ngModel required>
+              <select style="width:auto" (change)="getUniversityReviews(f)" name="university" id="university" ngModel required>
                 <option value="" disabled selected>Choose exchange university</option>
                 <option value="{{uni.id}}" *ngFor="let uni of universities">{{uni.title}}</option>
               </select>
@@ -74,31 +76,42 @@
 
       </div>
 
-      <p *ngFor="let e of sendMessageError?.non_field_errors">{{e}}</p>
+      <p *ngFor="let e of reviewError?.non_field_errors">{{e}}</p>
+
 
     </form>
+    </div>
+    <div class="column search-section-left is-70%">
+
+      <tr *ngFor="let r of reviews; let i=index">
+        <div class="box is-pulled-left" style="width: 100%" >
+          <article class="media">
+            <div class="media-content">
+              <div class="content">
+                <p>
+                  <strong>{{r.user?.first_name}} {{r.user?.last_name}}</strong>
+                  University {{r.university.title}}
+                  <br>
+                  <small>Lectures rating: {{r.lectures_rating}}</small>
+                  <small>Assigments rating: {{r.assignments_rating}}</small>
+                  <small>Difficulty rating: {{r.difficulty_rating}}</small>
+                  <small>Social rating: {{r.social_rating}}</small>
+                  <small>Availability rating: {{r.course_availability_rating}}</small>
+                  <small>Price rating: {{r.price_rating}}</small>
+                  <br>
+                  Description: <i>{{r.description}}</i>
+
+                  <br>
+
+                </p>
+              </div>
+            </div>
+          </article>
+        </div>
+        <br><br>
+      </tr>
 
   </div>
-
-  <div class="container">
-    <br>
-    <tr *ngFor="let msg of messages; let i=index">
-      <div class="box is-pulled-left" style="width: 100%" >
-        <article class="media">
-          <div class="media-content">
-            <div class="content">
-              <p>
-                <strong>{{msg.sender?.first_name}} {{msg.sender?.last_name}}</strong> <small>{{msg.time_stamp.slice(0,10)}}</small> <small>{{msg.time_stamp.slice(11,16)}}</small>
-                <br>
-                {{msg.text}}
-              </p>
-            </div>
-          </div>
-        </article>
-      </div>
-      <br><br>
-    </tr>
-
   </div>
 </section>
 

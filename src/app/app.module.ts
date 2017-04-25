@@ -50,7 +50,8 @@ import {
   ApplicationService,
 } from '../lib/services';
 import {ChatService} from "../lib/services/chat.service";
-import {ReviewsComponent} from "./containers/reviews/reviews.component";
+
+import {ReviewComponent} from "./containers/reviews/reviews.component";
 import {ReviewService} from "../lib/services/review.service";
 
 
@@ -90,7 +91,7 @@ type StoreType = {
     ProfileComponent,
     ChatComponent,
     CreateSubjectComponent,
-    ReviewsComponent
+    ReviewComponent
   ],
   imports: [ // import Angular  's modules
     BrowserModule,
@@ -101,7 +102,6 @@ type StoreType = {
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
     APP_PROVIDERS,
-
     SubjectService,
     UserService,
     Api,
