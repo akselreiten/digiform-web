@@ -67,21 +67,21 @@
       </div>
       -->
 
-      <form #f="ngForm" class="login-form" (ngSubmit)="pass">
+      <form #f="ngForm" class="login-form" (ngSubmit)="getUniversities(f)">
 
         <!-- University title -->
         <div class="field search-input">
-          <input class="input" type="text" name="title" id="title" placeholder="University name contains" ngModel>
+          <input class="input" (change)="getUniversities(f)" type="text" name="title" id="title" placeholder="University name contains" ngModel>
         </div>
 
         <!-- City -->
         <div class="field search-input">
-          <input class="input" type="text" name="city" id="city" placeholder="City" ngModel>
+          <input class="input" (change)="getUniversities(f)" type="text" name="city" id="city" placeholder="City" ngModel>
         </div>
 
         <!--Country -->
         <div class="field search-input">
-          <input class="input" type="text" name="country" id="country" placeholder="Country" ngModel>
+          <input class="input" (change)="getUniversities(f)" type="text" name="country" id="country" placeholder="Country" ngModel>
         </div>
 
         <!-- Error -->
@@ -116,7 +116,7 @@
         </thead>
 
         <tbody>
-        <tr *ngFor="let uni of universities; let i=index">
+        <tr *ngFor="let uni of searchResults; let i=index">
           <td>{{uni.title}}</td>
           <td>{{uni.city}}</td>
           <td>{{uni.country}}</td>

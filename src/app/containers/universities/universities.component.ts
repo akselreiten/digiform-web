@@ -13,14 +13,13 @@ import {UniversityService} from "../../../lib/services/university.service";
 export class UniversityComponent {
 
   public universities:any[] = [];
-
+  public universityError: any;
+  public searchResults:any[] = [];
 
   public test:string = 'Hey';
 
   constructor(
     private _universityService:UniversityService
-
-
 
 
 ) {
@@ -29,6 +28,17 @@ export class UniversityComponent {
       .subscribe(universities => {
         this.universities = universities;
       }, error => {})
+  }
+
+  public getUniversities(fg: FormGroup) {
+
+    this._universityService.getUniversities(fg.value.title, fg.value.city, fg.value.country)
+
+      .subscribe(success => {
+        this.searchResults = success;
+      }, error => {
+        this.universityError = error.json();
+      });
   }
 
   public login(fg:FormGroup) {

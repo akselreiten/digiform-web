@@ -23,4 +23,9 @@ export class UniversityService {
       .map(res => res.json());
   }
 
+  public getUniversities(title:any, city:any, country:any) {
+    return this._api.request('GET',this._url + "getUniversities/?title_contains=" + title + "&city=" + city + "&country=" + country)
+  .map(res => res.json());
+  }
+
 }
