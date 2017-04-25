@@ -9,7 +9,7 @@ import {API_URL} from "../../app/app.module";
 @Injectable()
 export class ReviewService{
 
-  private _url:string = `${API_URL}/application/`;
+  private _url: string = `${API_URL}/application/`;
 
   constructor(private _api: Api) {
   }

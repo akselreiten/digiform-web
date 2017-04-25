@@ -51,6 +51,7 @@ import {
 } from '../lib/services';
 import {ChatService} from "../lib/services/chat.service";
 import {ReviewsComponent} from "./containers/reviews/reviews.component";
+import {ReviewService} from "../lib/services/review.service";
 
 
 function authHttpServiceFactory(http: Http, options: RequestOptions) {
@@ -100,7 +101,6 @@ type StoreType = {
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
     APP_PROVIDERS,
-
     SubjectService,
     UserService,
     Api,
@@ -108,6 +108,7 @@ type StoreType = {
     UniversityService,
     ApplicationService,
     ChatService,
+    ReviewService,
 
 
     {
