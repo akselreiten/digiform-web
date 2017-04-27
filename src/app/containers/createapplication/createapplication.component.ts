@@ -45,6 +45,7 @@ export class CreateApplicationComponent {
     this.replacementPlaceholderString = "Please choose exchange university first";
   }
 
+  //  Returns subject by ID
   public getSubjectByID(event,bool){
 
     let id = event.target.value;
@@ -60,6 +61,7 @@ export class CreateApplicationComponent {
   }
 
 
+  //  Returns subject from university if exchange university is chosen
   public getUniSubjects(event){
 
     let id = event.target.value;
@@ -76,12 +78,13 @@ export class CreateApplicationComponent {
       }, error => {});
   }
 
+  //  Updates subjects code
   public updateSubjectCode(event){
     let id = event.target.value;
   }
 
+  //  Creates an application based on form values
   public createApplication(fg: FormGroup) {
-
     this._applicationService.createApplication(fg.value)
       /*later: add fg.value.subject_information, */
       .subscribe(success => {
@@ -91,8 +94,8 @@ export class CreateApplicationComponent {
       });
   }
 
+  //  Logs current user out
   public logout(){
-    console.log("dude");
     this._router.navigate(['login']);
     localStorage.removeItem("id_token");
 

@@ -15,11 +15,13 @@ export class ChatService {
 
   constructor(private _api:Api) {}
 
+  //  API request to get all messages
   public list() {
     return this._api.request('GET', this._url)
       .map(res => res.json());
   }
 
+  //  API request to send messages
   public sendMessage(data:any) {
 
     let url:string = `${this._url}`;

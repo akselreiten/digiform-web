@@ -34,6 +34,7 @@ export class UserService {
 
   }
 
+  //  API request to create a user
   public createUser(username: string, password: string, email: string, first_name: string, last_name: string) {
 
     let data: any = {
@@ -48,6 +49,7 @@ export class UserService {
     return this._api.request('POST', url, null, data)
   }
 
+  //  API request to get own profile
   public getOwnProfile() {
     return this._api.request('GET', `${this._url}getUser/`)
       .map(res => res.json());

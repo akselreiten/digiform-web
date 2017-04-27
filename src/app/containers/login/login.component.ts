@@ -25,6 +25,7 @@ export class LoginComponent {
 
   }
 
+  //  Logs in user, based on login credentials
   public login(fg:FormGroup) {
 
     this._userService.login(fg.value.username, fg.value.password)
@@ -35,6 +36,7 @@ export class LoginComponent {
       });
   }
 
+  //  Navigates user to createuser
   public createUserNavigate(){
     this._router.navigate(['createuser']);
   }

@@ -63,15 +63,16 @@ export class SubjectComponent {
       }, error => {});
   }
 
+  //  Gets university subjects based on event
   public getUniSubjects(event){
 
     let id = event.target.value;
     let foreignUniString = event.target.value.title;
 
     if (id > 0){
-      this.replacementPlaceholderString = "Velg et fag fra valgte universitet";
+      this.replacementPlaceholderString = "Choose a subject from chosen university";
     } else {
-      this.replacementPlaceholderString = "Velg først universitet";
+      this.replacementPlaceholderString = "Please choose university first";
     }
 
     this._universityService.listSubjects(id)
@@ -80,6 +81,7 @@ export class SubjectComponent {
       }, error => {});
   }
 
+  //  Creates application based on form values
   public createApplication(fg: FormGroup) {
 
     this._applicationService.createApplication(fg.value)
@@ -91,6 +93,7 @@ export class SubjectComponent {
       });
   }
 
+  //  Gets subject based on form values
   public getSubjects(fg: FormGroup) {
 
     this._applicationService.getApplications(fg.value.university, fg.value.ntnu_subject, fg.value.approval_status)
@@ -103,10 +106,12 @@ export class SubjectComponent {
   }
 
 
+  //  Navigates to createsubject
   public createSubjectNavigate(){
     this._router.navigate(['createsubject']);
   }
 
+  //  Logs current user out
   public logout(){
     this._router.navigate(['login']);
     localStorage.removeItem("id_token");

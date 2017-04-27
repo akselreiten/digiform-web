@@ -45,10 +45,9 @@ export class ReviewComponent {
   }
 
 
+  //  Logs current user out
   public logout() {
     this._router.navigate(['login']);
     localStorage.removeItem("id_token");
-
-
   }
 }

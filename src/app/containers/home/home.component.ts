@@ -42,12 +42,13 @@ export class HomeComponent {
 
   }
 
+  //  Navigates to create application
   public createApplicationNavigate(){
     this._router.navigate(['createapplication']);
   }
 
+  //  Logs current user out
   public logout(){
-    console.log("dude");
     this._router.navigate(['login']);
     localStorage.removeItem("id_token");
 

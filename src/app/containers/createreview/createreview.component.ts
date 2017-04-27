@@ -27,7 +27,7 @@ export class CreateReviewComponent {
 
   }
 
-
+  // Creates a review based on form values
   public createReview(fg: FormGroup) {
 
     this._reviewService.createReview(fg.value)

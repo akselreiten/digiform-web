@@ -22,6 +22,7 @@ export class CreateUserComponent {
 
   }
 
+  //  Creates user based on form values
   public createUser(fg: FormGroup) {
 
     this._userService.createUser(fg.value.username, fg.value.password, fg.value.email, fg.value.first_name, fg.value.last_name)
@@ -33,8 +34,8 @@ export class CreateUserComponent {
       });
   }
 
+  //  Logs current user out
   public logout(){
-    console.log("dude");
     this._router.navigate(['login']);
     localStorage.removeItem("id_token");
 

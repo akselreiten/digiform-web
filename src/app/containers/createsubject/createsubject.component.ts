@@ -34,7 +34,7 @@ export class CreateSubjectComponent {
 
   }
 
-
+  //  Creates subject based on form values
   public createSubject(fg: FormGroup) {
 
     this._subjectService.createSubject(fg.value)
@@ -46,8 +46,8 @@ export class CreateSubjectComponent {
       });
   }
 
+  //  Logs current user out
   public logout(){
-    console.log("dude");
     this._router.navigate(['login']);
     localStorage.removeItem("id_token");
 
