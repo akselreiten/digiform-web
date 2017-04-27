@@ -58,35 +58,33 @@
 
   <div class="container">
 
-  <form #f="ngForm" class="login-form" (ngSubmit)="sendMessage(f)">
+    <form #f="ngForm" class="login-form" (ngSubmit)="sendMessage(f)">
 
-    <div class="field">
-      <label class="label">Enter your message here</label>
-      <p class="control">
-        <textarea class="textarea" name="text" id="text" placeholder="Aa" ngModel required></textarea>
-      </p>
-    </div>
+      <div class="field">
+        <label class="label">Enter your message here</label>
+        <p class="control">
+          <textarea class="textarea" name="text" id="text" placeholder="Aa" ngModel required></textarea>
+        </p>
+      </div>
 
-    <p *ngFor="let e of sendMessageError?.non_field_errors">{{e}}</p>
-    <button class="button is-success" type="submit" onclick="window.location.reload()" >Send</button>
+      <p *ngFor="let e of sendMessageError?.non_field_errors">{{e}}</p>
+      <button class="button is-success" type="submit" onclick="window.location.reload()">Send</button>
 
-    <!--
-    <button class="button is-warning">Reset</button>
-    <button class="button is-danger">Quit</button>
-    -->
-  </form>
+    </form>
 
   </div>
 
   <div class="container">
     <br>
     <tr *ngFor="let msg of messages; let i=index">
-      <div class="box is-pulled-left" style="width: 100%" >
+      <div class="box is-pulled-left" style="width: 100%">
         <article class="media">
           <div class="media-content">
             <div class="content">
               <p>
-                <strong>{{msg.sender?.first_name}} {{msg.sender?.last_name}}</strong> <small>{{msg.time_stamp.slice(0,10)}}</small> <small>{{msg.time_stamp.slice(11,16)}}</small>
+                <strong>{{msg.sender?.first_name}} {{msg.sender?.last_name}}</strong>
+                <small>{{msg.time_stamp.slice(0,10)}}</small>
+                <small>{{msg.time_stamp.slice(11,16)}}</small>
                 <br>
                 {{msg.text}}
               </p>

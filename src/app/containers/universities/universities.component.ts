@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {FormGroup} from "@angular/forms";
 import {Router} from "@angular/router";
 
@@ -8,29 +8,25 @@ import {UniversityService} from "../../../lib/services/university.service";
 @Component({
   selector: 'universities',
   template: require('./universities.template.html'),
-  styles: [require('./universities.style.scss'), ]
+  styles: [require('./universities.style.scss'),]
 })
 
 export class UniversityComponent {
 
-  public universities:any[] = [];
+  public universities: any[] = [];
   public universityError: any;
-  public searchResults:any[] = [];
+  public searchResults: any[] = [];
 
-  public test:string = 'Hey';
+  public test: string = 'Hey';
 
-  constructor(
-    private _universityService:UniversityService,
-    private _router: Router
-
-
-
-) {
+  constructor(private _universityService: UniversityService,
+              private _router: Router) {
 
     this._universityService.list()
       .subscribe(universities => {
         this.universities = universities;
-      }, error => {})
+      }, error => {
+      })
   }
 
   public getUniversities(fg: FormGroup) {
@@ -44,13 +40,11 @@ export class UniversityComponent {
       });
   }
 
-  public login(fg:FormGroup) {
+  public login(fg: FormGroup) {
     console.log(fg.value);
-
   }
 
-  public logout(){
-    console.log("dude");
+  public logout() {
     this._router.navigate(['login']);
     localStorage.removeItem("id_token");
 

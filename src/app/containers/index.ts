@@ -4,7 +4,6 @@ export * from './universities/universities.component';
 export * from './createuser/createuser.component';
 export * from './createapplication/createapplication.component';
 export * from './subjects/subjects.component';
-export * from './help/help.component';
 export * from './profile/profile.component';
 export * from './chat/chat.component'
 export * from './createsubject/createsubject.component';

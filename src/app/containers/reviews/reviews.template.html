@@ -9,7 +9,6 @@
 
 <body>
 
-
 <nav class="nav has-shadow">
   <div class="container">
     <div class="nav">
@@ -60,31 +59,32 @@
 
     <div class="column search-section-left is-30%">
 
-    <form #f="ngForm" class="login-form" (ngSubmit)="getUniversityReviews(f)">
+      <form #f="ngForm" class="login-form" (ngSubmit)="getUniversityReviews(f)">
 
-      <label class="label">Exchange university</label>
-      <div class="field columns is-mobile">
+        <label class="label">Exchange university</label>
+        <div class="field columns is-mobile">
 
-        <div class="column is-one-third is-gapless ">
+          <div class="column is-one-third is-gapless ">
           <span class="select dropdown-fill">
-              <select style="width:auto" (change)="getUniversityReviews(f)" name="university" id="university" ngModel required>
+              <select style="width:auto" (change)="getUniversityReviews(f)" name="university" id="university" ngModel
+                      required>
                 <option value="" disabled selected>Choose exchange university</option>
                 <option value="{{uni.id}}" *ngFor="let uni of universities">{{uni.title}}</option>
               </select>
           </span>
+          </div>
+
         </div>
 
-      </div>
-
-      <p *ngFor="let e of reviewError?.non_field_errors">{{e}}</p>
+        <p *ngFor="let e of reviewError?.non_field_errors">{{e}}</p>
 
 
-    </form>
+      </form>
     </div>
     <div class="column search-section-left is-70%">
 
       <tr *ngFor="let r of reviews; let i=index">
-        <div class="box is-pulled-left" style="width: 100%" >
+        <div class="box is-pulled-left" style="width: 100%">
           <article class="media">
             <div class="media-content">
               <div class="content">
@@ -111,7 +111,7 @@
         <br><br>
       </tr>
 
-  </div>
+    </div>
   </div>
 </section>
 
@@ -135,7 +135,6 @@
 
   </div>
 </section>
-
 
 
 <footer class="footer">

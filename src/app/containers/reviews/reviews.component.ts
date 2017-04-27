@@ -13,21 +13,20 @@ import {ReviewService} from "../../../lib/services/review.service";
 
 export class ReviewComponent {
 
-  public universities:any[] = [];
-  public reviews:any[] = [];
-  public reviewError:any;
+  public universities: any[] = [];
+  public reviews: any[] = [];
+  public reviewError: any;
 
-  constructor(
-    private _universityService: UniversityService,
-    private _reviewService: ReviewService,
-    private _router: Router) {
+  constructor(private _universityService: UniversityService,
+              private _reviewService: ReviewService,
+              private _router: Router) {
 
     this._universityService.list()
       .subscribe(universities => {
         this.universities = universities;
         this.universities = this.universities.slice(1);
-      }, error => {});
-
+      }, error => {
+      });
   }
 
   public getUniversityReviews(fg: FormGroup) {
@@ -36,7 +35,8 @@ export class ReviewComponent {
 
       .subscribe(success => {
         this.reviews = success;
-      }, error => {});
+      }, error => {
+      });
   }
 
 
@@ -45,8 +45,7 @@ export class ReviewComponent {
   }
 
 
-  public logout(){
-    console.log("dude");
+  public logout() {
     this._router.navigate(['login']);
     localStorage.removeItem("id_token");
 

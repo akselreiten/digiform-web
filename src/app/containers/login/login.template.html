@@ -23,11 +23,11 @@
           <input class="input user-credential-box" type="password" name="password" id="password" placeholder="Password" ngModel required>
           <p *ngFor="let e of loginError?.non_field_errors">{{e}}</p>
           <br><br>
-          <button class="button is-primary" type="submit">Login</button>
+          <button id="login-button" class="button is-primary" type="submit">Login</button>
         </form>
-
+        <br>
         <form class="login-form" (ngSubmit)="createUserNavigate()">
-          <button class="button is-warning" type="submit">New user?</button>
+          <button class="button is-warning" id="new-user-button" type="submit">New user?</button>
         </form>
 
 

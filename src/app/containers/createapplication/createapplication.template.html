@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,7 +33,7 @@
         </figure>
         Profile
       </a>
-      <a class="nav-item is-tab" type="submit" (click)='logout()'>Log out</a>
+      <a class="nav-item is-tab" id="logout-button" type="submit" (click)='logout()'>Log out</a>
     </div>
   </div>
 </nav>
@@ -57,7 +56,7 @@
 <section class="section">
   <div class="container">
 
-    <form #f="ngForm" class="login-form" (ngSubmit)="createApplication(f)">
+    <form #f="ngForm" class="login-form" id="create-application-form" (ngSubmit)="createApplication(f)">
 
       <!-- NTNU Subject -->
 
@@ -67,7 +66,8 @@
 
         <div class="column is-one-third is-gapless">
           <span class="select dropdown-fill">
-            <select style="width:100%" (change)="getSubjectByID($event,true)" name="ntnu_subject" id="ntnu_subject"
+            <select style="width:100%" (change)="getSubjectByID($event,true)" id="ntnu-subject-selecter"
+                    name="ntnu_subject" id="ntnu_subject"
                     ngModel required>
               <option value="" disabled selected>Choose a subject from NTNU</option>
               <option value="{{subject.id}}" *ngFor="let subject of NTNUsubjects">{{subject.courseCode}}</option>
@@ -89,7 +89,8 @@
 
         <div class="column is-one-third is-gapless ">
           <span class="select dropdown-fill">
-              <select style="width:100%" (change)="getUniSubjects($event)" name="university" id="university" ngModel required>
+              <select style="width:100%" (change)="getUniSubjects($event)" id="exchange-university-selecter"
+                      name="university" id="university" ngModel required>
                 <option value="" disabled selected>Choose exchange university</option>
                 <option value="{{uni.id}}" *ngFor="let uni of universities">{{uni.title}}</option>
               </select>
@@ -107,7 +108,8 @@
 
         <div class="column is-one-third is-gapless dropdown-fill">
           <span class="select dropdown-fill">
-                    <select style="width:100%" (change)="getSubjectByID($event,false)" name="replacing_subject"
+                    <select style="width:100%" (change)="getSubjectByID($event,false)" id="replacement-subject-selecter"
+                            name="replacing_subject"
                             id="replacing_subject" ngModel required>
                       <option value="" disabled selected>{{replacementPlaceholderString}}</option>
                       <option value="{{subject.id}}" *ngFor="let subject of subjects">{{subject.courseCode}}</option>
@@ -126,7 +128,7 @@
       <div class="field">
         <label class="label">Subject Credits</label>
         <p class="control">
-          <input class="input" type="number" name="credits_ntnu" id="credits_ntnu"
+          <input class="input" type="number" name="credits_ntnu" id="subject-credits" id="credits_ntnu"
                  placeholder="Credits (Converted to NTNU-credits)" ngModel required>
         </p>
       </div>
@@ -140,7 +142,8 @@
           <textarea class="textarea" name="justification" id="justification" placeholder="Please justify why this class fits with your curriculum"></textarea>
         </p>
         -->
-        <textarea class="textarea" name="justification" id="justification" placeholder="Approval justification" ngModel></textarea>
+        <textarea class="textarea" name="justification" id="justification" placeholder="Approval justification"
+                  ngModel></textarea>
       </div>
 
 
@@ -149,7 +152,8 @@
       <div class="field">
         <label class="label">Subject Information (Optional)</label>
         <p class="control">
-          <textarea class="textarea" placeholder="Please provide us with information about the class"></textarea>
+          <textarea class="textarea" id="subject-information"
+                    placeholder="Please provide us with information about the class"></textarea>
         </p>
       </div>
 
@@ -183,105 +187,6 @@
   </div>
 </footer>
 
-
-
 </body>
 
 </html>
-
-
-
-<!--
-<div class="heading">
-  <body>
-  <div class="panes-container">
-
-    <div class="left-pane" id="left-pane">
-      <br>
-      <a href="#">
-        <img src="\assets\img\logo.png" alt="Digiform." style="max-width: 100%;max-height: 100%;width:140px;"></a>
-      <br>
-      <br>
-      <a href="#">Home</a><br>
-      <a href="#subjects">Subjects</a><br>
-      <a href="#universities">Universities</a><br>
-      <a href="#chat">Chat</a><br>
-      <a href="#profile">My profile</a><br>
-      <a href="#help">Help</a>
-
-    </div>
-    <div class="right-pane" id="right-pane">
-
-      <br>
-      <h1>New application</h1>
-
-
-
-      <form #f="ngForm" class="login-form" (ngSubmit)="createApplication(f)">
-
-
-
-        <select style="width:100%" (change)="getSubjectByID($event,true)" name="ntnu_subject" id="ntnu_subject" ngModel required>
-          <option value="" disabled selected>Velg et fag fra NTNU</option>
-          <option value="{{subject.id}}" *ngFor="let subject of NTNUsubjects">{{subject.courseCode}}</option>
-        </select>
-
-        <p style="font-size: 90%;" align="left"> NTNU-fag: {{chosenNtnuSubject}}</p>
-
-        <!--
-        <input (change)="updateSubjectCode($event)" type="text" placeholder="Velg et fag fra NTNU" name="ntnu_subject" list="ntnu_subject" ngModel required>
-        <datalist id="ntnu_subject">
-          <option value="{{subject.id}}" *ngFor="let subject of NTNUsubjects">{{subject.title}}</option>
-        </datalist>
-        -->
-
-        <!--<input type="text" name="ntnu_subject" id="ntnu_subject" placeholder="Choose subject" ngModel required> -->
-        <!-- University -->
-<!--
-        <select style="width:100%" (change)="getUniSubjects($event)" name="university" id="university" ngModel required>
-          <option value="" disabled selected>Velg et universitet i utlandet</option>
-          <option value="{{uni.id}}" *ngFor="let uni of universities">{{uni.title}}</option>
-        </select>
-        <br><br>
-        <!-- Replacement subject -->
-
-        <!--
-        <input placeholder={{replacementPlaceholderString}} type="text" name="replacing_subject" list="replacing_subject" ngModel required>
-        <datalist id="replacing_subject">
-          <option value="" disabled selected>{{replacementPlaceholderString}}</option>
-          <option value="{{subject.id}}" *ngFor="let subject of subjects">{{subject.title}}</option>
-        </datalist>
-        -->
-<!--
-        <select style="width:100%" (change)="getSubjectByID($event,false)" name="replacing_subject" id="replacing_subject" ngModel required>
-          <option value="" disabled selected>{{replacementPlaceholderString}}</option>
-          <option value="{{subject.id}}" *ngFor="let subject of subjects">{{subject.courseCode}}</option>
-        </select>
-
-        <p style="font-size: 90%;" align="left"> Fag i utlandet: {{chosenForeignSubject}}</p>
-
-        <!-- Subject information -->
-<!--
-        <textarea rows="7" cols="40" style="border: none; resize: none" name="subject_information"
-                  id="subject_information" placeholder="Subject Information (Optional)" ngModel></textarea>
-        <br><br>
-        <!-- Credits (NTNU) -->
-<!--        <input type="number" name="credits_ntnu" id="credits_ntnu" placeholder="Credits (NTNU)" ngModel required>
-        <br><br>
-
-        <!-- Approval justification -->
-<!--        <textarea rows="7" cols="40" style="border: none; resize: none" name="justification" id="justification"
-                  placeholder="Approval justification (optional)" ngModel></textarea>
-
-        <br><br>
-        <!-- Error -->
-<!--        <p *ngFor="let e of createApplicationError?.non_field_errors">{{e}}</p>
-
-        <button type="submit">Apply</button>
-      </form>
-    </div>
-  </div>
-  </body>
-</div>
-
--->

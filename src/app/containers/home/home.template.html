@@ -12,7 +12,7 @@
 
 <nav class="nav has-shadow">
   <div class="container">
-    <div class="nav-left">
+    <div class="nav-left" id="top-menu">
       <a class="nav-item" href="#">
         <img src="\assets\img\logo.png" alt="Digiform logo">
       </a>
@@ -34,7 +34,7 @@
         </figure>
         Profile
       </a>
-      <a class="nav-item is-tab" type="submit" (click)='logout()'>Log out</a>
+      <a class="nav-item is-tab" id="logout-button" type="submit" (click)='logout()'>Log out</a>
     </div>
   </div>
 </nav>
@@ -57,7 +57,7 @@
 <section class="section">
   <div class="container">
 
-    <table class="table is-striped">
+    <table class="table is-striped" id="application-table">
       <thead>
       <tr>
         <th><abbr title="Your NTNU Subject">NTNU Subject</abbr></th>
@@ -81,7 +81,7 @@
     </table>
 
     <form class="login-form" (ngSubmit)="createApplicationNavigate()">
-      <button class="button is-primary" type="submit">New application</button>
+      <button class="button is-primary" id="new-application-button" type="submit">New application</button>
     </form>
 
   </div>
